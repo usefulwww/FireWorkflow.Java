@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="MultiTasksPerActivity" Name="MultiTasksPerActivity" DisplayName="MultiTasksPerActivity" ResourceFile="" ResourceManager="">
+    <fpdl:DataFields>
+        <fpdl:DataField Id="MultiTasksPerActivity.a" Name="a" DisplayName="a" DataType="INTEGER" InitialValue="0"/>
+    </fpdl:DataFields>
+    <fpdl:StartNode Id="MultiTasksPerActivity.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="42"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="136"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Tasks/>
+    <fpdl:Activities>
+        <fpdl:Activity Id="MultiTasksPerActivity.Activity1" Name="Activity1" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="139"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="117"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="MultiTasksPerActivity.Activity1.Task1" Name="Task1" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.CurrentUserAssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="MultiTasksPerActivity.Activity2" Name="Activity2" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="348"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="36"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="MultiTasksPerActivity.Activity2.Task2" Name="Task2" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="MultiTasksPerActivity.Activity3" Name="Activity3" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="96"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="99"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="356"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="185"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="MultiTasksPerActivity.Activity3.Task5" Name="Task5" DisplayName="" Type="TOOL" Execution="SYNCHR" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Application Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Handler>org.fireflow.engine.taskinstance.SMSHandler</fpdl:Handler>
+                    </fpdl:Application>
+                </fpdl:Task>
+                <fpdl:Task Id="MultiTasksPerActivity.Activity3.Task3" Name="Task3" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+                <fpdl:Task Id="MultiTasksPerActivity.Activity3.Task6" Name="Task6" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="MultiTasksPerActivity.Activity4" Name="Activity4" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="576"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="108"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="MultiTasksPerActivity.Activity4.Task4" Name="Task4" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="MultiTasksPerActivity.Synchronizer1" Name="Synchronizer1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="272"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="137"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="MultiTasksPerActivity.Synchronizer2" Name="Synchronizer2" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="507"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="130"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="MultiTasksPerActivity.EndNode1" Name="EndNode1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="728"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="127"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="MultiTasksPerActivity.Transition1" From="MultiTasksPerActivity.START_NODE" To="MultiTasksPerActivity.Activity1" Name="Transition1" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MultiTasksPerActivity.Transition2" From="MultiTasksPerActivity.Activity1" To="MultiTasksPerActivity.Synchronizer1" Name="Transition2" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MultiTasksPerActivity.Transition3" From="MultiTasksPerActivity.Synchronizer1" To="MultiTasksPerActivity.Activity2" Name="Transition3" DisplayName="a&gt;1">
+            <fpdl:Condition>a&gt;1</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MultiTasksPerActivity.Transition4" From="MultiTasksPerActivity.Synchronizer1" To="MultiTasksPerActivity.Activity3" Name="Transition4" DisplayName="a&lt;1">
+            <fpdl:Condition>a&lt;1</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MultiTasksPerActivity.Transition5" From="MultiTasksPerActivity.Activity2" To="MultiTasksPerActivity.Synchronizer2" Name="Transition5" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MultiTasksPerActivity.Transition6" From="MultiTasksPerActivity.Synchronizer2" To="MultiTasksPerActivity.Activity4" Name="Transition6" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MultiTasksPerActivity.Transition7" From="MultiTasksPerActivity.Activity3" To="MultiTasksPerActivity.Synchronizer2" Name="Transition7" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MultiTasksPerActivity.Transition8" From="MultiTasksPerActivity.Activity4" To="MultiTasksPerActivity.EndNode1" Name="Transition8" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+    </fpdl:Transitions>
+</fpdl:WorkflowProcess>

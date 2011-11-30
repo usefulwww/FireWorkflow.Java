@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="child" Name="child" DisplayName="child" ResourceFile="">
+    <fpdl:DataFields>
+        <fpdl:DataField Id="child.xyz" Name="xyz" DisplayName="xyz" DataType="INTEGER" InitialValue="0"/>
+    </fpdl:DataFields>
+    <fpdl:StartNode Id="child.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="7"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="60"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Activities>
+        <fpdl:Activity Id="child.Activity1" Name="Activity1" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="79"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="38"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="child.Activity1.Task1" Name="Task1" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" Execution="SYNCHR">
+                    <fpdl:Performer Name="Test" DisplayName="Test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>cn.firesoft.xzy.MyAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="child.EndNode1" Name="EndNode1">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="267"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="61"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="child.Transition1" From="child.START_NODE" To="child.Activity1" Name="Transition1"/>
+        <fpdl:Transition Id="child.Transition2" From="child.Activity1" To="child.EndNode1" Name="Transition2"/>
+    </fpdl:Transitions>
+</fpdl:WorkflowProcess>

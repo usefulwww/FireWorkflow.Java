@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libs/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="libs/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/asm.jar"/>
+	<classpathentry kind="lib" path="libs/asm-attrs.jar"/>
+	<classpathentry kind="lib" path="libs/aspectjrt-1.5.4.jar"/>
+	<classpathentry kind="lib" path="libs/cglib-2.1.3.jar"/>
+	<classpathentry kind="lib" path="libs/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="libs/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="libs/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="libs/commons-io-1.3.2.jar"/>
+	<classpathentry kind="lib" path="libs/commons-jexl-1.1.jar"/>
+	<classpathentry kind="lib" path="libs/commons-lang-2.1.jar"/>
+	<classpathentry kind="lib" path="libs/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="libs/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="libs/hibernate3.jar"/>
+	<classpathentry kind="lib" path="libs/hsqldb.jar"/>
+	<classpathentry kind="lib" path="libs/org-fireflow-engine-1.0.0-alpha-build090601.jar"/>
+	<classpathentry kind="lib" path="libs/org-fireflow-model-1.0.0-alpha-build090519.jar"/>
+	<classpathentry kind="lib" path="libs/spring-aop-2.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/spring-beans-2.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/spring-context-2.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/spring-core-2.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/spring-dao-2.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/spring-hibernate3.jar"/>
+	<classpathentry kind="lib" path="libs/spring-jdbc-2.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/spring-support-2.0.8.jar"/>
+	<classpathentry kind="lib" path="libs/jta.jar"/>
+	<classpathentry kind="lib" path="libs/commons-dbcp-1.2.1.jar"/>
+	<classpathentry kind="lib" path="libs/commons-pool-1.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

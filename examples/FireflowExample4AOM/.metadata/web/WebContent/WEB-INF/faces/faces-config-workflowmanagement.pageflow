@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf12441206346870" configfile="/FireflowExample4AOM/web/WebContent/WEB-INF/faces/faces-config-workflowmanagement.xml">
+  <nodes xsi:type="pageflow:PFPage" name="org/fireflow/workflowmanagement/instances_data_viewer/InstancesDataViewer" id="pf12443584093430" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf12443584093431" path="/org/fireflow/workflowmanagement/instances_data_viewer/InstancesDataViewer.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="org/fireflow/workflowmanagement/instances_data_viewer/InstanceDetailsViewer" id="pf12443584093432" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf12443584093431" path="/org/fireflow/workflowmanagement/instances_data_viewer/InstanceDetailsViewer.xhtml"/>
+  <links id="pf12443584093431" target="pf12443584093432" source="pf12443584093430" outcome="SHOW_DETAIL"/>
+</pageflow:Pageflow>

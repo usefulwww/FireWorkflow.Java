@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML PUBLIC "" "">
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:ajax="http://www.apusic.com/jsf/ajax"
+	xmlns:om="http://www.apusic.com/jsf/misc"
+	renderKitId="AJAX">
+	<w:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</w:head>
+	
+	<om:useBean value="UploadWorkflowDefinitionBean"></om:useBean>
+	<w:page title="Insert title here">
+		<w:form enctype="multipart/form-data">
+		<div align="center">
+			<layout:panelGrid columns="2" cellspacing="5">
+				<layout:cell colspan="1" rowspan="1">流程定义文件:</layout:cell>
+				<w:fileUpload id="upFile"  uploadListener="#{UploadWorkflowDefinitionBean.processUpload}" binding="#{UploadWorkflowDefinitionBean.upFile}" />
+				<layout:cell colspan="1" rowspan="1">使该定义文件生效:</layout:cell>
+				<w:checkBox id="published" checked="true" />
+			</layout:panelGrid>
+			
+			<w:button action="#{UploadWorkflowDefinitionBean.save}" value="保存" />
+		<w:fileUploadProgress startMessage="开始上传" uploadingMessage="正在上传，已经上传{readBytes}k/{total}k({percentage}%)" completeMessage="上传结束，总共{total}k" errorMessage="上传错误：{error}" />
+		</div>
+		
+		</w:form>
+	</w:page>
+</f:view>

@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+.mainmenu {
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+}
+a{
+	text-decoration:none;
+}
+.tableHeader{
+	background-image: url(images/grid3-hrow-over.gif);
+}
+.row1{
+	background-image: url(images/row-over.gif);
+}
+.row2{
+}

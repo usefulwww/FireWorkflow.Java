@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+<body>
+<ui:composition
+	template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">
+	<ui:define name="resource">
+		<script
+			src="#{facesContext.externalContext.requestContextPath}/org/fireflow/example/resources/MyWorkItem.js" />
+	</ui:define>
+	<ui:define name="rightPane">
+
+		<div align="center"><span colspan="2"
+			style="font-size: 16px; font-weight: bold">待办工作</span></div>
+		<h:form id="mainForm">
+			<t:inputHidden id="selectedWorkItemId" forceId="true"
+				value="#{MyWorkItemBean.selectedWorkItemId}" />
+			<table width="100%">
+				<tr>
+					<td>流水号:<t:inputText value="#{MyWorkItemBean.condition_sn}"/></td>
+					<td>贷款申请人:<t:inputText value="#{MyWorkItemBean.condition_applicant}"/></td>
+					<td>顾客姓名:<t:inputText value="#{MyWorkItemBean.condition_customer_name}"/></td>
+				</tr>
+			</table>
+			<div align="center"><t:commandButton value="查询"
+				action="#{MyWorkItemBean.doQueryMyToDoWorkItemsByConditions}" /> | <t:commandButton
+				value="签收选定的记录" action="#{MyWorkItemBean.claimWorkItem}" /> | <t:commandButton
+				value="处理选定的记录" action="#{MyWorkItemBean.openForm}" /></div>
+			<br />
+			<div align="center"><t:dataTable
+				value="#{MyWorkItemBean.myTodoWorkitems}" var="workItem"
+				headerClass="tableHeader" rowIndexVar="theRowIndex"
+				rowClasses="row1, row2" style="width:90%">
+				<t:column>
+					<f:facet name="header">工单名称</f:facet>
+					<t:outputText value="#{workItem.taskInstance.displayName}" />
+				</t:column>
+				<t:column width="55%">
+					<f:facet name="header">业务信息</f:facet>
+					<t:outputText value="#{workItem.taskInstance.bizInfo}" />
+				</t:column>
+
+				<t:column>
+					<f:facet name="header">当前状态</f:facet>
+
+					<t:outputText value="#{workItem.state==0?'待签收':'-待-处-理-'}" />
+				</t:column>
+
+				<t:column>
+					<f:facet name="header">选择</f:facet>
+					<input id="radio#{theRowIndex}" type="radio" value="#{workItem.id}"
+						onclick="doSelectMe('radio#{theRowIndex}')" />
+
+				</t:column>
+			</t:dataTable></div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</body>
+
+</html>

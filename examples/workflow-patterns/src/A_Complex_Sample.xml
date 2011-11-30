@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="A_Complex_Sample" Name="A_Complex_Sample" DisplayName="A_Complex_Sample" ResourceFile="" ResourceManager="">
+    <fpdl:DataFields>
+        <fpdl:DataField Id="A_Complex_Sample.flag" Name="flag" DisplayName="flag" DataType="INTEGER" InitialValue="1"/>
+    </fpdl:DataFields>
+    <fpdl:StartNode Id="A_Complex_Sample.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="18"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="95"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Tasks/>
+    <fpdl:Activities>
+        <fpdl:Activity Id="A_Complex_Sample.Activity1" Name="Activity1" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="95"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="78"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity1.Task1" Name="Task1" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>test</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="A_Complex_Sample.Activity2" Name="Activity2" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="273"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="14"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity2.Task2" Name="Task2" DisplayName="" Type="TOOL" Execution="SYNCHR" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Application Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Handler>test</fpdl:Handler>
+                    </fpdl:Application>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="A_Complex_Sample.Activity3" Name="Activity3" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="261"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="171"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity3.Task3" Name="Task3" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>test</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="A_Complex_Sample.Activity4" Name="Activity4" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="458"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="76"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity4.Task4" Name="Task4" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>test</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="A_Complex_Sample.Activity5" Name="Activity5" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="635"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="78"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity5.Task5" Name="Task5" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>test</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="A_Complex_Sample.Activity6" Name="Activity6" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="532"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="171"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity6.Task6" Name="Task6" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>test</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="A_Complex_Sample.Activity7" Name="Activity7" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="461"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="287"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity7.Task7" Name="Task7" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>test</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="A_Complex_Sample.Activity8" Name="Activity8" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="821"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="288"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity8.Task8" Name="Task8" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>test</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="A_Complex_Sample.Activity9" Name="Activity9" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="820"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="101"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity9.Task9" Name="Task9" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>test</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="A_Complex_Sample.Activity10" Name="Activity10" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="1040"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="97"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="A_Complex_Sample.Activity10.Task10" Name="Task10" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>test</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="A_Complex_Sample.Synchronizer1" Name="Synchronizer1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="231"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="98"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="A_Complex_Sample.Synchronizer2" Name="Synchronizer2" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="385"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="194"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="A_Complex_Sample.Synchronizer3" Name="Synchronizer3" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="622"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="306"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="A_Complex_Sample.Synchronizer4" Name="Synchronizer4" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="977"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="118"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="A_Complex_Sample.Synchronizer5" Name="Synchronizer5" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="768"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="126"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="A_Complex_Sample.Synchronizer6" Name="Synchronizer6" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="587"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="94"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="A_Complex_Sample.EndNode1" Name="EndNode1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="1194"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="118"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="A_Complex_Sample.Transition1" From="A_Complex_Sample.Activity1" To="A_Complex_Sample.Synchronizer1" Name="Transition1" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition2" From="A_Complex_Sample.Synchronizer1" To="A_Complex_Sample.Activity2" Name="Transition2" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition3" From="A_Complex_Sample.Synchronizer1" To="A_Complex_Sample.Activity3" Name="Transition3" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition4" From="A_Complex_Sample.Activity3" To="A_Complex_Sample.Synchronizer2" Name="Transition4" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition5" From="A_Complex_Sample.Synchronizer2" To="A_Complex_Sample.Activity4" Name="Transition5" DisplayName="flag!=0">
+            <fpdl:Condition>flag!=0</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition6" From="A_Complex_Sample.Synchronizer2" To="A_Complex_Sample.Activity6" Name="Transition6" DisplayName="flag==0">
+            <fpdl:Condition>flag==0</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition7" From="A_Complex_Sample.Synchronizer2" To="A_Complex_Sample.Activity7" Name="Transition7" DisplayName="flag!=0">
+            <fpdl:Condition>flag!=0</fpdl:Condition>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.edgePointList" Value=""/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition8" From="A_Complex_Sample.Activity7" To="A_Complex_Sample.Synchronizer3" Name="Transition8" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition9" From="A_Complex_Sample.Synchronizer3" To="A_Complex_Sample.Activity8" Name="Transition9" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition10" From="A_Complex_Sample.Activity8" To="A_Complex_Sample.Synchronizer4" Name="Transition10" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition11" From="A_Complex_Sample.Synchronizer4" To="A_Complex_Sample.Activity10" Name="Transition11" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition12" From="A_Complex_Sample.Activity9" To="A_Complex_Sample.Synchronizer4" Name="Transition12" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition13" From="A_Complex_Sample.Activity5" To="A_Complex_Sample.Synchronizer5" Name="Transition13" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition14" From="A_Complex_Sample.Synchronizer5" To="A_Complex_Sample.Activity9" Name="Transition14" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition15" From="A_Complex_Sample.Activity6" To="A_Complex_Sample.Synchronizer5" Name="Transition15" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.edgePointList" Value="(729,201)"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition16" From="A_Complex_Sample.Activity4" To="A_Complex_Sample.Synchronizer6" Name="Transition16" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition17" From="A_Complex_Sample.Synchronizer6" To="A_Complex_Sample.Activity5" Name="Transition17" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition18" From="A_Complex_Sample.Activity2" To="A_Complex_Sample.Synchronizer4" Name="Transition18" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.edgePointList" Value="(873,45)"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition19" From="A_Complex_Sample.START_NODE" To="A_Complex_Sample.Activity1" Name="Transition19" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="A_Complex_Sample.Transition20" From="A_Complex_Sample.Activity10" To="A_Complex_Sample.EndNode1" Name="Transition20" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+    </fpdl:Transitions>
+</fpdl:WorkflowProcess>

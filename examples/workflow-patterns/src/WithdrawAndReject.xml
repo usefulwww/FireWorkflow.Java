@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="WithdrawAndReject" Name="WithdrawAndReject" DisplayName="WithdrawAndReject" ResourceFile="" ResourceManager="">
+    <fpdl:Description></fpdl:Description>
+    <fpdl:DataFields>
+        <fpdl:DataField Id="WithdrawAndReject.flag" Name="flag" DisplayName="" DataType="INTEGER" InitialValue="0"/>
+    </fpdl:DataFields>
+    <fpdl:StartNode Id="WithdrawAndReject.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="168"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="12"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Tasks/>
+    <fpdl:Activities>
+        <fpdl:Activity Id="WithdrawAndReject.Activity1" Name="Activity1" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="147"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="70"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity1.Task1" Name="Task1" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="SKIP">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity2" Name="Activity2" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="147"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="241"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity2.Task2" Name="Task2" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="SKIP">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity3" Name="Activity3" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="56"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="425"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity3.Task3" Name="Task3" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="NONE">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity4" Name="Activity4" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="204"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="425"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity4.Task4" Name="Task4" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity5" Name="Activity5" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="46"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="672"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity5.Task5" Name="Task5" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="NONE">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity6" Name="Activity6" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="215"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="672"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity6.Task6" Name="Task6" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity7" Name="Activity7" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="147"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="854"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity7.Task7" Name="Task7" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="NONE">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity8" Name="Activity8" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="69"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="1022"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity8.Task8" Name="Task8" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="NONE">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity9" Name="Activity9" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="220"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="1024"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity9.Task13" Name="Task13" DisplayName="" Type="TOOL" Execution="SYNCHR" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Application Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Handler>org.fireflow.engine.taskinstance.SMSHandler</fpdl:Handler>
+                    </fpdl:Application>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity10" Name="Activity10" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="93"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="133"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="1215"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity10.Task10" Name="Task10" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+                <fpdl:Task Id="WithdrawAndReject.Activity10.Task12" Name="Task12" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="WithdrawAndReject.Activity11" Name="Activity11" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:Description></fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="91"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="138"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="1413"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="WithdrawAndReject.Activity11.Task11" Name="Task11" DisplayName="" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+                <fpdl:Task Id="WithdrawAndReject.Activity11.Task13" Name="Task13" DisplayName="" Type="TOOL" Execution="SYNCHR" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Application Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Handler>org.fireflow.engine.taskinstance.SMSHandler</fpdl:Handler>
+                    </fpdl:Application>
+                    <fpdl:Description></fpdl:Description>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="WithdrawAndReject.Synchronizer1" Name="Synchronizer1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="163"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="368"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="WithdrawAndReject.Synchronizer2" Name="Synchronizer2" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="151"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="575"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="WithdrawAndReject.Synchronizer3" Name="Synchronizer3" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="168"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="799"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="WithdrawAndReject.Synchronizer4" Name="Synchronizer4" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="167"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="195"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="WithdrawAndReject.Synchronizer5" Name="Synchronizer5" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="169"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="996"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="WithdrawAndReject.Synchronizer6" Name="Synchronizer6" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="167"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="1156"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="WithdrawAndReject.Synchronizer7" Name="Synchronizer7" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="172"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="1347"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="WithdrawAndReject.EndNode1" Name="EndNode1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="175"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="1539"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="WithdrawAndReject.Transition1" From="WithdrawAndReject.Activity2" To="WithdrawAndReject.Synchronizer1" Name="Transition1" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition2" From="WithdrawAndReject.Synchronizer1" To="WithdrawAndReject.Activity3" Name="Transition2" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition3" From="WithdrawAndReject.Synchronizer1" To="WithdrawAndReject.Activity4" Name="Transition3" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition4" From="WithdrawAndReject.Activity3" To="WithdrawAndReject.Synchronizer2" Name="Transition4" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition5" From="WithdrawAndReject.Synchronizer2" To="WithdrawAndReject.Activity5" Name="Transition5" DisplayName="flag==0">
+            <fpdl:Condition>flag==0</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition6" From="WithdrawAndReject.Activity4" To="WithdrawAndReject.Synchronizer2" Name="Transition6" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition7" From="WithdrawAndReject.Synchronizer2" To="WithdrawAndReject.Activity6" Name="Transition7" DisplayName="flag&gt;0">
+            <fpdl:Condition>flag&gt;0</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition8" From="WithdrawAndReject.Activity5" To="WithdrawAndReject.Synchronizer3" Name="Transition8" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition9" From="WithdrawAndReject.Synchronizer3" To="WithdrawAndReject.Activity7" Name="Transition9" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition10" From="WithdrawAndReject.Activity6" To="WithdrawAndReject.Synchronizer3" Name="Transition10" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition11" From="WithdrawAndReject.START_NODE" To="WithdrawAndReject.Activity1" Name="Transition11" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition12" From="WithdrawAndReject.Activity1" To="WithdrawAndReject.Synchronizer4" Name="Transition12" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition13" From="WithdrawAndReject.Synchronizer4" To="WithdrawAndReject.Activity2" Name="Transition13" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition14" From="WithdrawAndReject.Activity7" To="WithdrawAndReject.Synchronizer5" Name="Transition14" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition15" From="WithdrawAndReject.Synchronizer5" To="WithdrawAndReject.Activity8" Name="Transition15" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition16" From="WithdrawAndReject.Synchronizer5" To="WithdrawAndReject.Activity9" Name="Transition16" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition17" From="WithdrawAndReject.Activity8" To="WithdrawAndReject.Synchronizer6" Name="Transition17" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition18" From="WithdrawAndReject.Synchronizer6" To="WithdrawAndReject.Activity10" Name="Transition18" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition19" From="WithdrawAndReject.Activity9" To="WithdrawAndReject.Synchronizer6" Name="Transition19" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition20" From="WithdrawAndReject.Activity10" To="WithdrawAndReject.Synchronizer7" Name="Transition20" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition21" From="WithdrawAndReject.Synchronizer7" To="WithdrawAndReject.Activity11" Name="Transition21" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="WithdrawAndReject.Transition22" From="WithdrawAndReject.Activity11" To="WithdrawAndReject.EndNode1" Name="Transition22" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+    </fpdl:Transitions>
+    <fpdl:ExtendedAttributes>
+        <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+        <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="168"/>
+        <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+        <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="12"/>
+    </fpdl:ExtendedAttributes>
+</fpdl:WorkflowProcess>

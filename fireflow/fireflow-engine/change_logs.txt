@@ -1,0 +1,56 @@
+#############################################################
+###  org-fireflow-engine-1.0.0-release-build09??.jar    ###
+#############################################################
+1、济南-聚灵(QQ 229849534)优化了代码，删除了一些垃圾和deprecated方法
+2、修正了EndNodeInstance中的一个错误，将NodeInstanceEvent.NODEINSTANCE_LEAVING事件发布出去，
+       并在该事件中删除相应的token。该错误会导致Loop的死循环（见http://www.fireflow.org/viewthread.php?tid=587&extra=page%3D2）
+       
+
+#############################################################
+###  org-fireflow-engine-1.0.0-release-build091008.jar    ###
+#############################################################
+1、增加IWorkItem.jumpToEx(...)方法，取消了当前环节和目标环节必须在同一条执行线的限制，使得自由流更加自由
+2、增加ITaskInstance.abortEx(...)方法，取消了当前环节和目标环节必须在同一条执行线的限制，
+3、引入IK-Expression作为条件表达式解析器
+
+#############################################################
+###  org-fireflow-engine-1.0.0-beta-build090830.jar       ###
+#############################################################
+1、修正IAssignable.asignToActor()和IAssignableasignToActors()中的错误单词"asign"
+2、增加ITaskInstance.abort(...)方法
+3、增加After_Workitem_Complete事件
+
+
+#############################################################
+###  org-fireflow-engine-1.0.0-beta-build090723.jar       ###
+#############################################################
+1、IWorkflowSession.claimWorkItem(workItemId,taskInstanceId)改为IWorkflowSession.claimWorkItem(workItemid)
+2、在IWorkflowSession中增加了setAttribute(Object)和getAttribute()方法，用于传递参数
+3、修正了在AssignmentHandler中结束workItem导致ActivityInstance的结束操作异常的bug
+
+
+#############################################################
+###  org-fireflow-engine-1.0.0-alpha-build090601.jar      ###
+#############################################################
+1、修正了ActivityInstance.fire(IToken tk)方法中的一个bug
+2、修改了PersistenceServiceHibernateImpl中的delete hql ，增强其健壮性
+
+
+#############################################################
+###  org-fireflow-engine-1.0.0-alpha-build090519.jar      ###
+#############################################################
+1、将org.fireflow.engine.event.IProcessInstanceEventListener.onProcessInstanceFired(...)改名为
+org.fireflow.engine.event.IProcessInstanceEventListener.onProcessInstanceEventFired(...)
+
+2、将org.fireflow.engine.event.ITaskInstanceEventListener.onTaskInstanceFired(...)改名为
+org.fireflow.engine.event.ITaskInstanceEventListener.onTaskInstanceEventFired(...)
+
+3、采用jdk1.5编译本jar包
+
+
+
+
+#############################################################
+###  org-fireflow-engine-1.0.0-alpha-build090517.jar      ###
+#############################################################
+项较于预览版作的变更请参阅相关文档

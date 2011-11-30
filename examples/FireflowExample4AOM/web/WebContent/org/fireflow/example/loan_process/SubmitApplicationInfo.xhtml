@@ -1,0 +1,69 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" renderKitId="AJAX">
+	<w:head>
+		<w:stylesheet src="/common/resources/examples.css" />
+		<style>
+label {
+	font-size: 13px;
+}
+</style>
+	</w:head>
+	<w:page>
+		<div align="center"><span
+				style="font-size: 16pt; font-weight: bold">某银行贷款审批表</span></div>
+		<w:form>
+			<div style="border: 1px solid blue" align="center">
+			
+			<span style="font-size: 12pt; font-weight: bold">申请信息</span>
+			<layout:panelGrid columns="2" cellspacing="5">
+				<layout:cell colspan="1" rowspan="1">
+					<label> 申请人姓名：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:textField id="applicantName" value="#{SubmitApplicationInfoBean.loanInfo.applicantName }" width="330" />
+				
+				<layout:cell colspan="1" rowspan="1">
+					<label> 申请人身份证号码：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:textField id="applicantId" value="#{SubmitApplicationInfoBean.loanInfo.applicantId }" width="330" />
+
+				<layout:cell colspan="1" rowspan="1">
+					<label> 申请人家庭住址：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:textField id="address" value="#{SubmitApplicationInfoBean.loanInfo.address }" width="330" />
+
+				<layout:cell colspan="1" rowspan="1">
+					<label> 申请人年收入(元)：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:textField id="salary" value="#{SubmitApplicationInfoBean.loanInfo.salary }" width="330" />
+
+				<layout:cell colspan="1" rowspan="1">
+					<label> 贷款额：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:textField id="loanValue" value="#{SubmitApplicationInfoBean.loanInfo.loanValue }" width="330" />
+
+				<layout:cell colspan="1" rowspan="1">
+					<label> 还贷日期(yyyyMMdd)：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:textField id="returnDate" value="#{SubmitApplicationInfoBean.loanInfo.returnDate }" width="330" />
+				
+				<layout:cell colspan="1" rowspan="1">
+					<label> 信贷员：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:textField id="loanteller" value="#{SubmitApplicationInfoBean.loanInfo.loanteller }" width="330" />
+				
+				<layout:cell colspan="1" rowspan="1">
+					<label> 信息录入时间(yyyyMMdd)：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:dateField id="appInfoInputDate" value="#{SubmitApplicationInfoBean.loanInfo.appInfoInputDate }" width="330" />
+			</layout:panelGrid>
+			
+			</div>
+			<w:button id="save" value="保存" width="100" />
+			<h:messages></h:messages>
+			<br />
+			<h:outputText id="response" escape="false"></h:outputText>
+		</w:form>
+	</w:page>
+</f:view>
+

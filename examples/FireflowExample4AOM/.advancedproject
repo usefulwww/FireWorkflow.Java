@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectAdvanced>
+  <entry kind="EntityClass" value="${name}" />
+  <entry kind="EntityPrimaryKey" value="${name}PK" />
+  <entry kind="BeanInterface" value="I${name}Service" />
+  <entry kind="SpringInterface" value="${name}Service" />
+  <entry kind="WebServiceInterface" value="${name}DAO" />
+  <entry kind="DiagramViewCodeGenType" value="Entity" />
+</projectAdvanced>
+

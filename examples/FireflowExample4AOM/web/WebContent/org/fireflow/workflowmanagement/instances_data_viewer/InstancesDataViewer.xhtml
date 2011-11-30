@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:layout="http://www.apusic.com/jsf/layout" xmlns:om="http://www.apusic.com/jsf/misc"
+        xmlns:ajax="http://www.apusic.com/jsf/ajax" 
+        renderKitId="AJAX">
+        <w:head>
+                <w:stylesheet src="/common/resources/examples.css" />
+        </w:head>
+        <w:page>
+                <div align="center" >
+                <h3>流程实例</h3>
+                </div>
+                <br />
+                <w:form style="width:80%;height:80%">
+                        <w:dataGrid id="grid" paged="true" var="procInst" trackMouseOver="true" singleSelect="true" rows="10" toolBarPosition="top">
+                        	
+                        	<w:idColumn  header="实例Id" id="id" />
+                        	<w:outputColumn header="名称" id="name" />
+                        	<w:outputColumn header="中文名称" id="displayName" />
+                        	<w:outputColumn header="版本" id="version" />
+                        	<w:outputColumn header="状态" id="state" value="#{Utilities.workflowElementInstanceStates[procInst.state]}" />
+                        	<w:outputColumn header="是否挂起" id="suspended" />
+                        	<w:outputColumn header="创建人" id="creatorId" />
+                        	<w:outputColumn header="创建时间" id="createdTime" />
+                        	<w:outputColumn header="结束时间" id="endTime" />
+                        		
+                            <w:pagingToolbar>
+	                        	<w:menu label="操作" >
+	                        		<w:commandMenuItem id="abort" label="暂停" image="/org/fireflow/workflowmanagement/resources/images/stop_16.gif" action="#{InstancesDataViewerBean.abortProcessInstance}" />
+	                        		<w:commandMenuItem id="suspend" label="挂起" image="/org/fireflow/workflowmanagement/resources/images/suspend.gif" action="#{InstancesDataViewerBean.suspendProcessInstance}" />
+	                        		<w:commandMenuItem id="restore" label="恢复" image="/org/fireflow/workflowmanagement/resources/images/restore.gif" action="#{InstancesDataViewerBean.restoreProcessInstance}" />
+	                            </w:menu>
+                            </w:pagingToolbar>
+                            
+                        </w:dataGrid>
+                </w:form>
+                	<layout:window id="dialog" width="800" height="300" modal="true" autoScroll="true"
+                        style="padding: 5px;" collapsible="false" resizable="false" title="实例信息">
+                        <w:dataGrid id="taskgrid"  var="taskInst" autoHeight="true" singleSelect="true" rows="10" paged="true" toolBarPosition="top">
+		                    	<w:outputColumn header="步骤" id="stepNumber"/>
+		                        <w:outputColumn header="名称" id="displayName" />
+		                        <w:outputColumn header="状态" id="state" value="#{Utilities.workflowElementInstanceStates[taskInst.state]}" />
+		                        <w:outputColumn header="挂起" id="suspended" />
+		                        <w:outputColumn header="业务信息" id="bizInfo" />
+		                </w:dataGrid>
+                         <w:dataGrid id="workitemgrid" var="workitem" autoHeight="true" singleSelect="true" rows="10" paged="true" toolBarPosition="top">
+		                    <w:outputColumn header="操作者" id="actorId" />
+		                    <w:outputColumn header="状态" value="#{Utilities.workflowElementInstanceStates[workitem.state]}"/>
+		                    <w:outputColumn header="创建时间" id="createdTime" />
+		                    <w:outputColumn header="完成时间" id="endTime" />
+		                </w:dataGrid>
+                         <w:dataGrid id="variablegrid" var="variable" autoHeight="true" singleSelect="true" rows="10" paged="true" toolBarPosition="top">
+		                    <w:outputColumn header="变量名" value="#{variable[0]}"/>
+		                    <w:outputColumn header="变量值" value="#{variable[1]}" />
+		                </w:dataGrid>
+                </layout:window>
+                
+                
+        </w:page>
+</f:view>

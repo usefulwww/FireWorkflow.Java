@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+<ui:composition template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">	
+	<ui:define name="rightPane">
+	<script>
+	function changeUnitPrice(goodsList){
+		var goodsName = goodsList.value;
+		var unitPrice = document.getElementById("unitPrice");
+		if (goodsName=="TCL 电视机"){
+			unitPrice.value="1399";
+		}else if (goodsName=="长虹 电视机"){
+			unitPrice.value="1378";
+		}else if (goodsName=="万和 热水器"){
+			unitPrice.value="899";
+		}else if (goodsName=="方太 抽油烟机"){
+			unitPrice.value="2350";
+		}else{
+			unitPrice.value="1620";
+		}
+		var tmp = document.getElementById("number");
+		tmp.focus();
+	}
+	function calculateTotal(){
+		var unitPrice = document.getElementById("unitPrice");
+		var theNumber = document.getElementById("number");
+		var total = document.getElementById("total");
+		if (isNaN(theNumber.value)){
+			alert("Input is invalid!");
+			theNumber.focus();
+			theNumber.select();
+			return;
+		}
+		total.value=theNumber.value * unitPrice.value;
+	}
+	
+	function checkForm(){
+		var theNumber = document.getElementById("number");
+		if (theNumber.value==null || theNumber.value==""){
+			alert("Input the number");
+			theNumber.focus();
+			return false;
+		}
+		
+		var theCustomerName = document.getElementById("customerName");
+
+		if(theCustomerName.value==null || theCustomerName.value==""){
+			alert("Input the customer name");
+			theCustomerName.focus();
+			return false;
+		}
+		return true;
+	}
+	</script>
+		<h:form onsubmit="return checkForm();">
+			<table align="center">
+				<tr>
+					<td colspan="2" style="font-size:16px;font-weight:bold" align="center">收银</td>
+				</tr>
+				<tr>
+					<td align="right">流水号:</td><td><t:inputText value="#{PaymentBean.paymentInfo.sn}"/></td>
+				</tr>
+				<tr>
+					<td align="right">货品名称:</td><td>
+					<t:selectOneMenu value="#{PaymentBean.paymentInfo.goodsName}" onchange="changeUnitPrice(this);"
+						id="goodsList" forceId="true">
+						<f:selectItems value="#{PaymentBean.goods}"/>
+					</t:selectOneMenu></td>
+					
+					<script>
+						var goodsList = document.getElementById("goodsList");
+						goodsList.focus();
+					</script>					
+				</tr>	
+
+				<tr>
+					<td align="right">单价:</td><td><t:inputText id="unitPrice" forceId="true" value="#{PaymentBean.paymentInfo.unitPrice}"
+					/></td>
+					<script>
+						var unitPrice = document.getElementById("unitPrice");
+						unitPrice.readOnly=true;
+						unitPrice.value="1399";
+					</script>
+				</tr>
+				<tr>
+					<td align="right">数量:</td><td><t:inputText id="number" forceId="true" value="#{PaymentBean.paymentInfo.quantity}"
+						onblur="calculateTotal()" maxlength="2"/><span style="color:red">*</span></td>
+				</tr>		
+				<tr>
+					<td align="right">总价:</td><td><t:inputText id="total" forceId="true" value="#{PaymentBean.paymentInfo.amount}" /></td>
+					<script>
+						var total = document.getElementById("total");
+						total.readOnly=true;
+						total.value="0";
+					</script>					
+				</tr>
+				<tr>
+					<td align="right">客户姓名:</td><td>
+					<t:inputText id="customerName" forceId="true" value="#{PaymentBean.paymentInfo.customerName}"/>
+					<span style="color:red">*</span></td>
+				</tr>	
+				<tr>
+					<td align="right">手机:</td><td><t:inputText value="#{PaymentBean.paymentInfo.customerMobile}"/></td>
+				</tr>	
+				<tr>
+					<td align="right">电话/传真:</td><td><t:inputText value="#{PaymentBean.paymentInfo.customerPhoneFax}"/></td>
+				</tr>		
+				<tr>
+					<td colspan="2"><t:commandButton value="Save" action="#{PaymentBean.doSaveBizData}"/></td>
+				</tr>																												
+			</table>
+		</h:form>
+	</ui:define>
+	</ui:composition>
+</html>

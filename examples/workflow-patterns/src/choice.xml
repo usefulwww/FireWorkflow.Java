@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="choice" Name="choice" DisplayName="choice" ResourceFile="">
+    <fpdl:DataFields>
+        <fpdl:DataField Id="choice.days" Name="days" DisplayName="请假天数" DataType="INTEGER" InitialValue="0"/>
+    </fpdl:DataFields>
+    <fpdl:StartNode Id="choice.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="77"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="3"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Activities>
+        <fpdl:Activity Id="choice.Activity1" Name="Activity1" DisplayName="请假" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="58"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="97"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="choice.Activity1.Task1" Name="Task1" DisplayName="填写请假条" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" Execution="SYNCHR">
+                    <fpdl:Performer Name="Test" DisplayName="Test">
+                        <fpdl:AssignmentHandler>cn.firesoft.xyz.MyAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+        </fpdl:Activity>
+        <fpdl:Activity Id="choice.Activity2" Name="Activity2" DisplayName="项目经理审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="6"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="405"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="choice.Activity2.Task1" Name="Task1" DisplayName="审批请假条" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" Execution="SYNCHR">
+                    <fpdl:Performer Name="Test" DisplayName="Test">
+                        <fpdl:AssignmentHandler>cn.firesoft.xyz.MyAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+        </fpdl:Activity>
+        <fpdl:Activity Id="choice.Activity3" Name="Activity3" DisplayName="部门经理审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="119"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="411"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="choice.Activity3.Task1" Name="Task1" DisplayName="审批请假条" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" Execution="SYNCHR">
+                    <fpdl:Performer Name="Test" DisplayName="Test">
+                        <fpdl:AssignmentHandler>cn.firesoft.xyz.MyAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="choice.Synchronizer1" Name="Synchronizer1">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="80"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="246"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="choice.EndNode1" Name="EndNode1">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="82"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="588"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="choice.Transition1" From="choice.START_NODE" To="choice.Activity1" Name="Transition1">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="choice.Transition2" From="choice.Activity1" To="choice.Synchronizer1" Name="Transition2">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="choice.Transition3" From="choice.Synchronizer1" To="choice.Activity2" Name="Transition3" DisplayName="小于等于2天">
+            <fpdl:Condition>days&lt;=2</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="choice.Transition4" From="choice.Synchronizer1" To="choice.Activity3" Name="Transition4" DisplayName="大于2天">
+            <fpdl:Condition>days&gt;2</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="choice.Transition5" From="choice.Activity2" To="choice.EndNode1" Name="Transition5">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="choice.Transition6" From="choice.Activity3" To="choice.EndNode1" Name="Transition6">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+    </fpdl:Transitions>
+</fpdl:WorkflowProcess>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:security="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.xsd">
+
+
+	<bean id="ResourceDAO"
+		class="org.fireflow.security.persistence.ResourceDAO">
+		<property name="sessionFactory">
+			<ref bean="MyHibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="RoleDAO"
+		class="org.fireflow.security.persistence.RoleDAO">
+		<property name="sessionFactory">
+			<ref bean="MyHibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserRoleDAO"
+		class="org.fireflow.security.persistence.UserRoleDAO">
+		<property name="sessionFactory">
+			<ref bean="MyHibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="DepartmentDAO"
+		class="org.fireflow.security.persistence.DepartmentDAO">
+		<property name="sessionFactory">
+			<ref bean="MyHibernateSessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserDAO"
+		class="org.fireflow.security.persistence.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="MyHibernateSessionFactory" />
+		</property>
+	</bean>
+	
+		
+	<bean id="RoleResourceDAO"
+		class="org.fireflow.security.persistence.RoleResourceDAO">
+		<property name="sessionFactory">
+			<ref bean="MyHibernateSessionFactory" />
+		</property>
+	</bean>
+	
+</beans>

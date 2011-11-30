@@ -1,0 +1,48 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+	xmlns:h="http://java.sun.com/jsf/html" renderKitId="AJAX">
+	<w:head>
+		<w:stylesheet src="/common/resources/examples.css" />
+		<style>
+label {
+	font-size: 13px;
+}
+</style>
+	</w:head>
+	<w:page>
+		
+		<w:form>
+			<h:inputHidden id="selectWorkItemId" value="#{WorkItemListBean.selectWorkItemId}" />
+			<div align="center">
+			<h3>送货操作界面：</h3>
+			<layout:panelGrid columns="2" cellspacing="5">
+				<layout:cell colspan="1" rowspan="1">
+					<label> 流水号：</label>
+				</layout:cell>
+				<h:outputLabel  value="#{requestScope.CURRENT_WORKITEM.taskInstance.sn}" width="330" />
+
+				<h:outputLabel value="货品名称："></h:outputLabel>
+				<h:outputLabel value="#{requestScope.CURRENT_WORKITEM.taskInstance.goodsName}" width="330" />
+				
+				<layout:cell colspan="1" rowspan="1">
+					<label> 数量：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<h:outputLabel value="#{requestScope.CURRENT_WORKITEM.taskInstance.quantity}" width="330" />
+				
+				<layout:cell colspan="1" rowspan="1">
+					<label> 客户姓名：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<h:outputLabel value="#{requestScope.CURRENT_WORKITEM.taskInstance.customerName}" width="330" />
+				
+			</layout:panelGrid>
+			<w:button id="save" value="保存" onclick="alert('保存成功');" />
+			<w:button id="complete" value="结束工单" action="#{WorkItemListBean.completeWorkItem}" width="100" />
+
+			<h:messages></h:messages>
+			<br />
+			<h:outputText id="response" escape="false"></h:outputText>
+			</div>
+		</w:form>
+	</w:page>
+</f:view>
+

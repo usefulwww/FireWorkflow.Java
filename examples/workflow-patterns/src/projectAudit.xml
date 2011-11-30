@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="projectAudit" Name="projectAudit" DisplayName="projectAudit" ResourceFile="" ResourceManager="">
+    <fpdl:StartNode Id="projectAudit.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="115"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="-24"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Tasks/>
+    <fpdl:Activities>
+        <fpdl:Activity Id="projectAudit.Submit_application_activity" Name="Submit_application_activity" DisplayName="提交立项申请" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="91"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="origin" Value="04"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="38"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="projectAudit.Submit_application_activity.Submit_appliation_info_task" Name="Submit_appliation_info_task" DisplayName="录入立项申请资料" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="Applicant" DisplayName="立项申请人">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>com.ylkj.workflow.ou.CurrentUserAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="projectapp" DisplayName="立项申请录入页面">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>pms\WebContent\pms\project\projectapp.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.department_Audit_Activity" Name="department_Audit_Activity" DisplayName="部门审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="90"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="216"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="projectAudit.department_Audit_Activity.department_Audit_Task" Name="department_Audit_Task" DisplayName="部门经理审批" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="departmentMananger" DisplayName="部门经理">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>com.ylkj.workflow.ou.AssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="projectAudit" DisplayName="立项审批页面">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>pms/project/projectAudit.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.pm_Audit_Activity" Name="pm_Audit_Activity" DisplayName="项目管理部审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="97"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="614"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="projectAudit.pm_Audit_Activity.pm_Audit_Task" Name="pm_Audit_Task" DisplayName="项目管理部经理审批" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="pmManager" DisplayName="项目管理部经理">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>com.ylkj.workflow.ou.AssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="projectAudit" DisplayName="审批页面">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>pms/project/projectAudit.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.Market_Audit_Activity" Name="Market_Audit_Activity" DisplayName="市场部审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="96"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="406"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="projectAudit.Market_Audit_Activity.Market_Audit_Task" Name="Market_Audit_Task" DisplayName="市场部经理审批" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="marketManager" DisplayName="市场部经理">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>com.ylkj.workflow.ou.AssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="projectAudit" DisplayName="审批页面">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>pms/project/projectAudit.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.Activity5" Name="Activity5" DisplayName="略过" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="173"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="415"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks/>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.techorg_Audit_Activity" Name="techorg_Audit_Activity" DisplayName="技术委员会审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="283"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="634"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="projectAudit.techorg_Audit_Activity.techorg_Audit_Task" Name="techorg_Audit_Task" DisplayName="技术委员会审批" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="techorgManager" DisplayName="技术委员会">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>com.ylkj.workflow.ou.AssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="projectAudit" DisplayName="审批页面">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>pms/project/projectAudit.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.finance_Audit_Activity" Name="finance_Audit_Activity" DisplayName="财务审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="277"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="416"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="projectAudit.finance_Audit_Activity.finance_Audit_Task" Name="finance_Audit_Task" DisplayName="财务部经理审批" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="financeManager" DisplayName="财务部经理">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>com.ylkj.workflow.ou.AssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="projectAudit" DisplayName="审批页面">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>pms/project/projectAudit.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                    <fpdl:ListForm Name="projectAudit" DisplayName="审批页面">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>pms/project/projectAudit.jsp</fpdl:Uri>
+                    </fpdl:ListForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.deputyManager_Audit_Activity" Name="deputyManager_Audit_Activity" DisplayName="分管领导审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="274"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="220"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="projectAudit.deputyManager_Audit_Activity.deputyManager_Audit_Task" Name="deputyManager_Audit_Task" DisplayName="分管领导审批" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="deputyManager" DisplayName="分管领导">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>com.ylkj.workflow.ou.AssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="projectAudit" DisplayName="审批页面">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>pms/project/projectAudit.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.generalManager_Audit_Activity" Name="generalManager_Audit_Activity" DisplayName="总经理审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="279"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="33"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="projectAudit.generalManager_Audit_Activity.generalManager_Audit_Task" Name="generalManager_Audit_Task" DisplayName="总经理审批" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="generalManager" DisplayName="总经理">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>com.ylkj.workflow.ou.AssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="projectAudit" DisplayName="审批页面">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>pms/project/projectAudit.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.Activity10" Name="Activity10" DisplayName="略过" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="381"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="425"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks/>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="projectAudit.Activity11" Name="Activity11" DisplayName="略过" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="376"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="23"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks/>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="projectAudit.Synchronizer1" Name="Synchronizer1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="113"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="176"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="projectAudit.Synchronizer2" Name="Synchronizer2" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="115"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="336"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="projectAudit.Synchronizer3" Name="Synchronizer3" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="118"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="549"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="projectAudit.Synchronizer4" Name="Synchronizer4">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="204"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="673"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="projectAudit.Synchronizer5" Name="Synchronizer5">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="304"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="563"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="projectAudit.Synchronizer6" Name="Synchronizer6">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="304"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="357"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="projectAudit.Synchronizer7" Name="Synchronizer7">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="297"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="160"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="projectAudit.EndNode1" Name="EndNode1">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="299"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="-16"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="projectAudit.Transition1" From="projectAudit.START_NODE" To="projectAudit.Submit_application_activity" Name="Transition1" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition2" From="projectAudit.Submit_application_activity" To="projectAudit.Synchronizer1" Name="Transition2" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition3" From="projectAudit.Synchronizer1" To="projectAudit.department_Audit_Activity" Name="Transition3" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition4" From="projectAudit.department_Audit_Activity" To="projectAudit.Synchronizer2" Name="Transition4" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition5" From="projectAudit.Synchronizer2" To="projectAudit.Market_Audit_Activity" Name="Transition5" DisplayName="">
+            <fpdl:Condition>origin=="04"</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition6" From="projectAudit.Synchronizer2" To="projectAudit.Activity5" Name="Transition6" DisplayName="">
+            <fpdl:Condition>origin!="04"</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition7" From="projectAudit.Market_Audit_Activity" To="projectAudit.Synchronizer3" Name="Transition7" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition8" From="projectAudit.Activity5" To="projectAudit.Synchronizer3" Name="Transition8" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition9" From="projectAudit.Synchronizer3" To="projectAudit.pm_Audit_Activity" Name="Transition9" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition10" From="projectAudit.pm_Audit_Activity" To="projectAudit.Synchronizer4" Name="Transition10"/>
+        <fpdl:Transition Id="projectAudit.Transition11" From="projectAudit.Synchronizer4" To="projectAudit.techorg_Audit_Activity" Name="Transition11"/>
+        <fpdl:Transition Id="projectAudit.Transition12" From="projectAudit.techorg_Audit_Activity" To="projectAudit.Synchronizer5" Name="Transition12"/>
+        <fpdl:Transition Id="projectAudit.Transition13" From="projectAudit.Synchronizer5" To="projectAudit.finance_Audit_Activity" Name="Transition13">
+            <fpdl:Condition>origin=="03"</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition14" From="projectAudit.finance_Audit_Activity" To="projectAudit.Synchronizer6" Name="Transition14"/>
+        <fpdl:Transition Id="projectAudit.Transition15" From="projectAudit.Synchronizer6" To="projectAudit.deputyManager_Audit_Activity" Name="Transition15"/>
+        <fpdl:Transition Id="projectAudit.Transition16" From="projectAudit.deputyManager_Audit_Activity" To="projectAudit.Synchronizer7" Name="Transition16"/>
+        <fpdl:Transition Id="projectAudit.Transition17" From="projectAudit.Synchronizer7" To="projectAudit.generalManager_Audit_Activity" Name="Transition17">
+            <fpdl:Condition>isImportant=="Y"</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition18" From="projectAudit.generalManager_Audit_Activity" To="projectAudit.EndNode1" Name="Transition18"/>
+        <fpdl:Transition Id="projectAudit.Transition19" From="projectAudit.Synchronizer5" To="projectAudit.Activity10" Name="Transition19">
+            <fpdl:Condition>origin!="03"</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition20" From="projectAudit.Activity10" To="projectAudit.Synchronizer6" Name="Transition20"/>
+        <fpdl:Transition Id="projectAudit.Transition21" From="projectAudit.Synchronizer7" To="projectAudit.Activity11" Name="Transition21">
+            <fpdl:Condition>isImportant!="Y"</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="projectAudit.Transition22" From="projectAudit.Activity11" To="projectAudit.EndNode1" Name="Transition22"/>
+    </fpdl:Transitions>
+</fpdl:WorkflowProcess>

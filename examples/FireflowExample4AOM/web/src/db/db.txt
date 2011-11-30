@@ -1,0 +1,46 @@
+create memory table T_Biz_TradeInfo(
+  id varchar(50),
+  sn varchar(50),
+  goods_name varchar(100),
+  goods_type varchar(50),
+  quantity numeric(5),
+  unit_price numeric(8,2),
+  amount numeric(8,2),
+  customer_name varchar(50),
+  customer_mobile varchar(30),
+  customer_phone_fax varchar(30),
+  customer_address varchar(150),
+  state varchar(15),--payed,delivered
+  payed_time date,
+  delivered_time date
+);
+
+ALTER TABLE T_Biz_TradeInfo ADD CONSTRAINT PK_T_TradeInfo
+	PRIMARY KEY (ID)
+;
+create unique index idx_t_TradeInfo_sn on T_Biz_TradeInfo(sn);
+
+create table T_Biz_MyTaskInstance(
+	TASKINSTANCE_ID varchar(50),
+	sn	varchar(50),
+	goods_name varchar(100),
+	quantity numeric(5),
+	customer_name varchar(50)
+);
+
+alter table T_Biz_MyTaskInstance add constraint PK_T_Biz_MyTaskInstance primary key (TASKINSTANCE_ID);
+
+create index idx_mytaskinstance_sn on T_Biz_MyTaskInstance(sn);
+
+
+
+
+create MEMORY table T_FF_DF_WORKFLOWDEF (ID varchar(50 ) not null, PROCESS_ID varchar(100 ) not null, NAME varchar(100 ) not null, DISPLAY_NAME varchar(128 ), DESCRIPTION varchar(1024 ), VERSION numeric(10,0) not null, PROCESS_CONTENT LONGVARCHAR, PUBLISHED numeric(1,0), PUBLISHER varchar(50 ), PUBLISH_TIME timestamp, primary key (ID));
+create MEMORY table T_FF_RT_JOINPOINT (ID varchar(50 ) not null, SYNCHRONIZER_ID varchar(200 ) not null, VALUE numeric(10,0), ALIVE numeric(1,0), PROCESSINSTANCE_ID varchar(50 ) not null, primary key (ID));
+create MEMORY table T_FF_RT_PROCESSINSTANCE (ID varchar(50 ) not null, PROCESS_ID varchar(100 ) not null, VERSION numeric(10,0) not null, NAME varchar(100 ), DISPLAY_NAME varchar(128 ), STATE numeric(10,0), CREATED_TIME timestamp, STARTED_TIME timestamp, EXPIRED_TIME timestamp, END_TIME timestamp, PARENT_PROCESSINSTANCE_ID varchar(50 ), PARENT_TASKINSTANCE_ID varchar(50 ), primary key (ID));
+create MEMORY table T_FF_RT_PROCINST_VAR (PROCESSINSTANCE_ID varchar(50 ) not null, VALUE varchar(255 ), NAME varchar(255 ) not null, primary key (PROCESSINSTANCE_ID, NAME));
+create MEMORY table T_FF_RT_TASKINSTANCE (ID varchar(50 ) not null, BIZ_TYPE varchar(250 ) not null, TASK_ID varchar(300 ) not null, ACTIVITY_ID varchar(200 ) not null, NAME varchar(100 ) not null, DISPLAY_NAME varchar(128 ), STATE numeric(10,0), TASK_TYPE varchar(10 ), CREATED_TIME timestamp not null, STARTED_TIME timestamp, EXPIRED_TIME timestamp, END_TIME timestamp, ASSIGNMENT_STRATEGY varchar(10 ) not null, PROCESSINSTANCE_ID varchar(50 ) not null, PROCESS_ID varchar(100 ) not null, VERSION numeric(10,0) not null, primary key (ID));
+create MEMORY table T_FF_RT_TOKEN (ID varchar(50 ) not null, ALIVE numeric(1,0) not null, VALUE numeric(10,0) not null, NODE_ID varchar(200 ) not null, PROCESSINSTANCE_ID varchar(50 ) not null, primary key (ID));
+create MEMORY table T_FF_RT_WORKITEM (ID varchar(50 ) not null, STATE numeric(10,0) not null, CREATED_TIME timestamp not null, SIGNED_TIME timestamp, END_TIME timestamp, ACTOR_ID varchar(50 ), COMMENTS varchar(1024 ), TASKINSTANCE_ID varchar(50 ) not null, primary key (ID));
+alter MEMORY table T_FF_RT_PROCINST_VAR add constraint FKD79C420D7AF471D8 foreign key (PROCESSINSTANCE_ID) references T_FF_RT_PROCESSINSTANCE;
+alter MEMORY table T_FF_RT_WORKITEM add constraint FK4131554DE2527DDC foreign key (TASKINSTANCE_ID) references T_FF_RT_TASKINSTANCE;

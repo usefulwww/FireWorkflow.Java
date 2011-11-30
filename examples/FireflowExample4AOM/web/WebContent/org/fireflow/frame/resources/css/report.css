@@ -1,0 +1,21 @@
+.reportTitle div {
+	font-weight: bold;
+	font-size: 27px;
+	text-decoration: underline;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.report {
+	font-size: 15px;
+	text-align: center;
+}
+
+.report thead td {
+	font-weight: bold;
+	border-bottom: 1px solid #000000;
+}
+
+.footer td {
+	border-top: 1px solid #000000;
+}

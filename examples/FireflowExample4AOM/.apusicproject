@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project javaeeVersion="JavaEE 5.0">
+  <module uri="web" kind="web" AOMEnabled="true" IoVCEnabled="true" ViewType="FACELETS">
+    <entry kind="src" path="src" />
+    <entry kind="web-content" path="WebContent" />
+    <entry kind="defaultNameSpace" value="" />
+  </module>
+  <entry kind="explodedear" path=".explodedEar" />
+</project>
+

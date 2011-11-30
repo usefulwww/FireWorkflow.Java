@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:jsfext="http://www.fireflow.org/jsfext">
+
+<ui:composition
+	template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">
+	<ui:define name="BizTitleAndContextMenu">
+		<t:saveState value="#{UserManagementBean.bizDataList}" />
+		<t:saveState value="#{UserManagementBean.selectedObjectId}" />
+		<t:saveState value="#{UserManagementBean.currentObject}" />
+		<t:saveState value="#{UserManagementBean.isCreatOperation}" />
+	</ui:define>
+	
+	<ui:define name="rightPane">
+		<h:form>
+			<fieldset
+				style="width: 720; height: 350; border: 1px solid blue; margin: 0px; padding: 0px"
+				align="left"><legend> <span
+				style="font-size: 10pt; font-weight: bold; color: black">用户详细信息</span>
+			</legend>
+			<table width="100%" cellspacing="0" border="0">
+				<tr>
+					<td align="right" style="font-size: 10pt">登录名： <t:inputText
+						id="loginid" size="28" tabindex="19"
+						disabled="#{not UserEditorModel.isCreateOperation}"
+						value="#{UserManagementBean.currentObject.loginid}">
+					</t:inputText></td>
+					<td align="right" style="font-size: 10pt">姓名： <t:inputText
+						id="name" size="28"
+						disabled="#{not UserEditorModel.isCreateOperation}"
+						value="#{UserManagementBean.currentObject.name}" tabindex="57">
+					</t:inputText></td>
+
+				</tr>
+				<tr>
+					<td align="right" style="font-size: 10pt">所属部门： <t:selectOneMenu
+						id="department" style="width:185px"
+						value="1">
+						<t:selectItems value="#{UtilManagedBean.departmentSelectItems}" />
+					</t:selectOneMenu></td>
+					<td align="right" style="font-size: 10pt">职务： <t:inputText
+						id="title" size="28"
+						value="#{UserManagementBean.currentObject.title}" tabindex="57">
+					</t:inputText></td>
+
+				</tr>
+				<tr>
+					<td align="right" style="font-size: 10pt">密码： <t:inputSecret
+						id="password" size="28"
+						disabled="#{not UserEditorModel.isCreateOperation}"
+						value="#{UserManagementBean.currentObject.password}" tabindex="57">
+					</t:inputSecret></td>
+					<td align="right" style="font-size: 10pt">密码过期时间： <t:inputDate
+						id="date1"
+						value="#{UserManagementBean.currentObject.passwordExpiredTime}"
+						popupCalendar="true" /></td>
+				</tr>
+
+
+				<tr>
+					<td colspan="2" height="24"></td>
+				</tr>
+
+				<tr>
+					<td align="left" style="font-size: 10pt" colspan="2">拥有的角色列表：
+					<input type="button" value="编辑"
+						onclick="JavaScript:document.getElementById('openEditUserRoleButton').click();" />
+					</td>
+				</tr>
+				<tr>
+					<td align="right" style="font-size: 10pt" colspan="2"><jsfext:dataTable
+						id="dsList2" value="#{UserManagementBean.currentObject.roles}"
+						var="role" width="100%" rowIndexVar="rowIndex"
+						frameDivStyle="overflow-Y: auto;overflow-X: auto;width:100%;height: 150px;border:1px">
+						<t:column>
+							<f:facet name="header">
+										序号
+									</f:facet>
+							<jsfext:rowAction
+								action="#{RoleEditorModel.onBriefQueryResultSelected}">
+								<f:param name="roleId" value="#{role.id}" />
+							</jsfext:rowAction>
+							<div align="center"><t:outputText value="#{rowIndex+1}" />
+							</div>
+						</t:column>
+						<t:column>
+							<f:facet name="header">
+											代码
+											</f:facet>
+							<div align="center"><t:outputText value="#{role.code}" />
+							</div>
+						</t:column>
+						<t:column>
+							<f:facet name="header">
+											名称
+											</f:facet>
+							<div align="center"><t:outputText value="#{role.name}" />
+							</div>
+						</t:column>
+						<t:column>
+							<f:facet name="header">
+											说明
+											</f:facet>
+							<div align="center"><t:outputText
+								value="#{role.description}" /></div>
+						</t:column>
+					</jsfext:dataTable></td>
+
+				</tr>
+			</table>
+
+			<div><t:commandButton value="保存"
+				action="#{UserEditorModel.onMainFormSubmit}" /></div>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>	

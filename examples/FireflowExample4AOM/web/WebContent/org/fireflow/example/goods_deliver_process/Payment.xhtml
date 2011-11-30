@@ -1,0 +1,56 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+	xmlns:h="http://java.sun.com/jsf/html" renderKitId="AJAX">
+	<w:head>
+		
+	<style>
+	label {
+		font-size: 13px;
+	}
+	</style>
+	</w:head>
+	<w:page>
+		<w:form>
+			<h3>个人详细信息：</h3>
+			<layout:panelGrid columns="2" cellspacing="5">
+				<layout:cell colspan="1" rowspan="1">
+					<label> 流水号：</label>
+				</layout:cell>
+				<w:textField id="sn" value="#{PaymentBean.paymentInfo.sn }" width="330" readOnly="true" />
+
+				<h:outputLabel value="货品名称："></h:outputLabel>
+				<w:combo id="goodsName"  width="164" value="#{PaymentBean.paymentInfo.goodsName }" >
+					<f:selectItems id="goods" />
+				</w:combo>
+				
+				<h:outputLabel value="单价："></h:outputLabel>
+				<w:numberField id="unitPrice" value="#{PaymentBean.paymentInfo.unitPrice }"  width="330" />
+				
+				<layout:cell colspan="1" rowspan="1">
+					<label> 数量：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:numberField required="true" requiredMessage="数量不能为空" id="quantity" value="#{PaymentBean.paymentInfo.quantity }"  width="330" />
+				
+				<h:outputLabel value="总价："></h:outputLabel>
+				<w:numberField id="amount" value="#{PaymentBean.paymentInfo.amount }" width="330"  />
+
+				<layout:cell colspan="1" rowspan="1">
+					<label> 客户姓名：<span style="color: red;">*</span></label>
+				</layout:cell>
+				<w:textField  required="true" requiredMessage="客户姓名不能为空"  id="customerName" value="#{PaymentBean.paymentInfo.customerName }" width="330" />
+				
+				<h:outputLabel value="手机："></h:outputLabel>
+				<w:textField id="customerMobile" value="#{PaymentBean.paymentInfo.customerMobile }" width="330" />
+				
+				<h:outputLabel value="电话/传真:"></h:outputLabel>
+				<w:textField id="customerPhoneFax" value="#{PaymentBean.paymentInfo.customerPhoneFax }" width="330" />
+				
+			</layout:panelGrid>
+			<w:button id="save" value="保存" width="100" />
+			<h:messages></h:messages>
+			<br />
+			<h:outputText id="response" escape="false"></h:outputText>
+		</w:form>
+	</w:page>
+</f:view>
+

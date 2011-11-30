@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:jsfext="http://www.fireflow.org/jsfext">
+<ui:component>
+	<t:dataTable value="#{InstancesDataViewerBean.taskInstanceList}"
+		var="taskInst" headerClass="tableHeader" rowClasses="row1, row2"
+		varDetailToggler="detailToggler" width="100%">
+		<t:column>
+			<f:facet name="header">步骤</f:facet>
+			<t:outputText value="#{taskInst.stepNumber}" />
+		</t:column>
+		<t:column>
+			<f:facet name="header">名称</f:facet>
+			<t:outputText value="#{taskInst.displayName}" />
+		</t:column>
+		<t:column>
+			<f:facet name="header">状态</f:facet>
+			<t:outputText value="#{Utilities.workflowElementInstanceStates[taskInst.state]}" />
+		</t:column>
+			<t:column>
+				<f:facet name="header">挂起</f:facet>
+				<t:outputText value="#{taskInst.suspended}" />
+			</t:column>			
+		<t:column width="55%">
+			<f:facet name="header">业务信息</f:facet>
+			<t:outputText value="#{taskInst.bizInfo}" />
+		</t:column>
+		<t:column columnId="workItems">
+			<f:facet name="header">
+				<h:outputText value="工单信息" />
+			</f:facet>
+			<h:commandLink rendered="#{detailToggler.currentDetailExpanded}"
+				action="#{detailToggler.toggleDetail}">
+				<h:outputText value="Hide" />
+			</h:commandLink>
+			<h:commandLink rendered="#{!detailToggler.currentDetailExpanded}"
+				action="#{detailToggler.toggleDetail}">
+				<h:outputText value="Show" />
+			</h:commandLink>
+		</t:column>
+    <f:facet name="detailStamp">
+        <t:dataTable id="workItems" width="60%" align="right" headerClass="tableHeader" rowClasses="row1, row2" var="workItem" value="#{taskInst.workItems}">
+            <h:column>
+            	<f:facet name="header">操作者</f:facet>
+                <h:outputText value="#{workItem.actorId}" style="font-size: 11px"/>
+            </h:column>
+            <h:column>
+            	<f:facet name="header">状态</f:facet>
+                <h:outputText value="#{Utilities.workflowElementInstanceStates[workItem.state]}"></h:outputText>
+            </h:column>
+            <h:column>
+            	<f:facet name="header">创建时间</f:facet>
+                <h:outputText value="#{workItem.createdTime}"></h:outputText>
+            </h:column>
+            <h:column>
+            	<f:facet name="header">完成时间</f:facet>
+                <h:outputText value="#{workItem.endTime}"></h:outputText>
+            </h:column>            
+        </t:dataTable>
+    </f:facet>
+
+	</t:dataTable>
+</ui:component>
+</html>

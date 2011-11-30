@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="MyFirstProcess" Name="MyFirstProcess" DisplayName="MyFirstProcess" ResourceFile="">
+    <fpdl:StartNode Id="MyFirstProcess.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="72"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="12"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Activities>
+        <fpdl:Activity Id="MyFirstProcess.ShouLi" Name="ShouLi" DisplayName="受理" CompletionStrategy="ALL">
+            <fpdl:Description>受理新的业务</fpdl:Description>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="76"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="44"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="124"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="97"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="MyFirstProcess.ShouLi.ShouLi-Task" Name="ShouLi-Task" DisplayName="登记xx业务申请" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" Execution="SYNCHR">
+                    <fpdl:Performer Name="ShouLi-Role" DisplayName="受理岗">
+                        <fpdl:AssignmentHandler>cn.firesoft.XXX.ShouliAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+        </fpdl:Activity>
+        <fpdl:Activity Id="MyFirstProcess.HeCha" Name="HeCha" DisplayName="核查" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="66"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="52"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="150"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="315"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="MyFirstProcess.HeCha.HeCha-Task" Name="HeCha-Task" DisplayName="调用xxx接口进行核查" Type="TOOL" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" Execution="SYNCHR">
+                    <fpdl:Application DisplayName="核查程序">
+                        <fpdl:Handler>org.firesoft.XXXX.HeChaHandler</fpdl:Handler>
+                    </fpdl:Application>
+                </fpdl:Task>
+            </fpdl:Tasks>
+        </fpdl:Activity>
+        <fpdl:Activity Id="MyFirstProcess.ShenPi" Name="ShenPi" DisplayName="审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="224"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="341"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="MyFirstProcess.ShenPi.ShenPi-Task" Name="ShenPi-Task" DisplayName="业务领导审批" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" Execution="SYNCHR">
+                    <fpdl:Performer Name="ShenPi-Role" DisplayName="审批岗">
+                        <fpdl:AssignmentHandler>cn.firesoft.XXXX.ShenPiAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="MyFirstProcess.Synchronizer1" Name="Synchronizer1">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="74"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="258"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="MyFirstProcess.Synchronizer2" Name="Synchronizer2">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="164"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="383"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="MyFirstProcess.EndNode1" Name="EndNode1">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="245"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="526"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="MyFirstProcess.Transition1" From="MyFirstProcess.START_NODE" To="MyFirstProcess.ShouLi" Name="Transition1">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MyFirstProcess.Transition2" From="MyFirstProcess.ShouLi" To="MyFirstProcess.Synchronizer1" Name="Transition2">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MyFirstProcess.Transition3" From="MyFirstProcess.Synchronizer1" To="MyFirstProcess.HeCha" Name="Transition3">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MyFirstProcess.Transition4" From="MyFirstProcess.HeCha" To="MyFirstProcess.Synchronizer2" Name="Transition4">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MyFirstProcess.Transition5" From="MyFirstProcess.Synchronizer2" To="MyFirstProcess.ShenPi" Name="Transition5">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="MyFirstProcess.Transition6" From="MyFirstProcess.ShenPi" To="MyFirstProcess.EndNode1" Name="Transition6">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+    </fpdl:Transitions>
+    <fpdl:Loops>
+        <fpdl:Loop id="MyFirstProcess.Loop1" From="MyFirstProcess.Synchronizer2" To="MyFirstProcess.Synchronizer1" Name="Loop1">
+            <fpdl:Condition>spyj==2</fpdl:Condition>
+            </fpdl:Loop>
+        </fpdl:Loops>
+</fpdl:WorkflowProcess>

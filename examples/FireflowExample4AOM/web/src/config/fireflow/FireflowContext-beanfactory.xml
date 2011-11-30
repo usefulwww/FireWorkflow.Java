@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean
+		id="org.fireflow.example.goods_deliver_process.workflowextension.GoodsDeliverTaskInstanceCreator"
+		class="org.fireflow.example.goods_deliver_process.workflowextension.GoodsDeliverTaskInstanceCreator"></bean>
+
+	<bean
+		id="org.fireflow.example.goods_deliver_process.workflowextension.SMSHandler"
+		class="org.fireflow.example.goods_deliver_process.workflowextension.SMSHandler" />
+
+
+
+	<bean
+		id="org.fireflow.example.loan_process.workflowextension.LoanTaskInstanceCreator"
+		class="org.fireflow.example.loan_process.workflowextension.LoanTaskInstanceCreator" />
+	<bean
+		id="org.fireflow.example.loan_process.workflowextension.ApproveTaskInstanceEventListener"
+		class="org.fireflow.example.loan_process.workflowextension.ApproveTaskInstanceEventListener">
+		<property name="approveInfoDAO">
+			<ref bean="ApproveInfoDAO" />
+		</property>
+	</bean>
+	<bean id="org.fireflow.example.loan_process.workflowextension.ApproveApplicationTaskCompletionEvaluator"
+		class="org.fireflow.example.loan_process.workflowextension.ApproveApplicationTaskCompletionEvaluator">
+		<property name="approveInfoDAO">
+			<ref bean="ApproveInfoDAO" />
+		</property>		
+		<property name="loanInfoDAO">
+			<ref bean="LoanInfoDAO" />
+		</property>				
+	</bean>
+
+
+	<bean
+		id="org.fireflow.example.workflowextension.CurrentUserAssignmentHandler"
+		class="org.fireflow.example.workflowextension.CurrentUserAssignmentHandler"></bean>
+		
+		
+	<bean
+		id="org.fireflow.example.workflowextension.RoleBasedAssignmentHandler"
+		class="org.fireflow.example.workflowextension.RoleBasedAssignmentHandler">
+		<property name="userDAO">
+			<ref bean="UserDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="org.fireflow.example.workflowextension.ProcessInstanceCreator"
+		class="org.fireflow.example.workflowextension.ProcessInstanceCreator">
+	</bean>
+</beans>

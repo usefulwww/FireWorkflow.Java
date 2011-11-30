@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="org.fireflow.engine.impl.ProcessInstanceTrace" table="T_FF_HIST_TRACE">
+    <id name="id" type="java.lang.String">
+      <column length="50" name="ID"/>
+      <generator class="uuid"/>
+    </id>
+    <property name="processInstanceId" type="java.lang.String" update="false">
+      <column  length="50" name="PROCESSINSTANCE_ID" not-null="true" index="IDX_TRACE_PROCINSTID"/>
+    </property>
+    <property name="stepNumber" type="java.lang.Integer" update="false">
+      <column  length="4" name="STEP_NUMBER" not-null="true"/>
+    </property>
+    <property name="minorNumber" type="java.lang.Integer" update="false">
+      <column  length="4" name="MINOR_NUMBER" not-null="true"/>
+    </property>
+    <property name="type" type="java.lang.String" update="false">
+      <column length="15" name="TYPE" not-null="true"/>
+    </property>
+    <property name="edgeId" type="java.lang.String" update="false">
+      <column length="100" name="EDGE_ID" />
+    </property>
+    <property name="fromNodeId" type="java.lang.String" update="false">
+      <column length="100" name="FROM_NODE_ID" not-null="true"/>
+    </property>
+    <property name="toNodeId" type="java.lang.String" update="false">
+      <column length="100" name="TO_NODE_ID" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

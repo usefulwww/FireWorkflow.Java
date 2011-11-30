@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config xmlns="http://java.sun.com/JSF/Configuration">
+	<component>
+		<component-type>org.fireflow.jsf.datatable.HtmlDataTableEx</component-type>
+		<component-class>org.fireflow.jsf.datatable.HtmlDataTableEx</component-class>
+	</component>
+	<component>
+		<component-type>org.fireflow.jsf.datatable.DataTableController</component-type>
+		<component-class>org.fireflow.jsf.datatable.DataTableController</component-class>
+	</component>
+	<component>
+		<component-type>org.fireflow.jsf.datatable.RowAction</component-type>
+		<component-class>org.fireflow.jsf.datatable.RowAction</component-class>
+	</component>
+
+	<render-kit>
+        <renderer>
+            <component-family>javax.faces.Data</component-family>
+            <renderer-type>org.fireflow.jsf.datatable.HtmlTableRendererEx</renderer-type>
+            <renderer-class>org.fireflow.jsf.datatable.HtmlTableRendererEx</renderer-class>
+        </renderer>   
+        
+        <renderer>
+            <component-family>javax.faces.Output</component-family>
+            <renderer-type>org.fireflow.jsf.datatable.DataTableControllerRenderer</renderer-type>
+            <renderer-class>org.fireflow.jsf.datatable.DataTableControllerRenderer</renderer-class>
+        </renderer>   
+        
+        <renderer>
+            <component-family>javax.faces.Command</component-family>
+            <renderer-type>org.fireflow.jsf.datatable.RowActionRenderer</renderer-type>
+            <renderer-class>org.fireflow.jsf.datatable.RowActionRenderer</renderer-class>
+        </renderer>	
+        
+        <renderer>
+            <component-family>javax.faces.Panel</component-family>
+            <renderer-type>org.fireflow.jsf.tabbedpane.HtmlTabbedPaneRendererExtension</renderer-type>
+            <renderer-class>org.fireflow.jsf.tabbedpane.HtmlTabbedPaneRendererExtension</renderer-class>
+        </renderer>             
+	</render-kit>
+</faces-config>

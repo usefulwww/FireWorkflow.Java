@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    <bean id="org.fireflow.engine.taskinstance.CurrentUserAssignmentHandlerMock" class="org.fireflow.engine.taskinstance.CurrentUserAssignmentHandlerMock"/>
+
+    <bean id="org.fireflow.engine.taskinstance.AssignmentHandlerMock" class="org.fireflow.engine.taskinstance.AssignmentHandlerMock"/>
+
+    <bean id="org.fireflow.engine.taskinstance.SMSHandler" class="org.fireflow.engine.taskinstance.SMSHandler"/>
+    
+    <bean id="org.fireflow.engine.taskinstance.AssignToCurrentUserAndCompleteWorkItemHandler" class="org.fireflow.engine.taskinstance.AssignToCurrentUserAndCompleteWorkItemHandler"/>
+</beans>

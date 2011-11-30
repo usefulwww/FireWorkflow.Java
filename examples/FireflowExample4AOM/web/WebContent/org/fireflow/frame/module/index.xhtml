@@ -1,0 +1,84 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+	xmlns:ajax="http://www.apusic.com/jsf/ajax" renderKitId="AJAX"
+	xmlns:h="http://java.sun.com/jsf/html" >
+
+	<w:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/all.css" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/tabPanelIcon.css" />
+		<style type="text/css">
+		.help_tpcls {
+			background-image: url(../resources/images/help.png) !important;
+		}
+		</style>
+		<script language="javascript">
+		  //<![CDATA[
+			function addTab(title, url, iconCls) {
+				if(typeof tabs !== "undefined") {
+				    var item = tabs.getItem(url);
+				    if (item) {
+				        item.show();
+				        return;
+				    }
+				    tabs.add({
+						id : url,
+						title: title,
+						iconCls: iconCls,
+						html: '<iframe id="' + url + '_frame" style="overflow-x:hidden;width:100%;height:100%" ' +
+										'src="' + url + '" border="0"' +
+										'vspace="0" hspace="0" marginwidth="0" ' +
+										'marginheight="0" framespacing="0" ' +
+										'frameborder="0" >',
+						closable:true
+				   }).show();
+			   }
+			}
+			function refreshTag() {
+				if(typeof tabs !== "undefined") {
+					var item = tabs.getActiveTab();
+					var url = item.getId();
+					var frame = document.getElementById(url + "_frame");
+					if(frame != null) frame.src = url;
+				}
+			}
+		//]]>
+		</script>
+	</w:head>
+	<w:page title="#{IndexBean.messages.indexPageTitle}">
+		<ajax:scripter id="scripter"></ajax:scripter>
+		<layout:borderLayout fitToBody="true">
+			<layout:panel region="north" height="80" header="false" border="false" style="text-align:right">
+				<ajax:updater url="header.xhtml" style="width:100%;height:100%;overflow:hidden;" />
+			</layout:panel>
+
+			<layout:panel region="center" header="false" border="false" style="height:100%;">
+				<layout:borderLayout>
+					<layout:panel region="north" height="27" header="false" border="false">
+						<w:form>
+							<ajax:updater id="menuUpdater">
+								<w:toolBar id="toolBar"></w:toolBar>
+							</ajax:updater>
+						</w:form>
+					</layout:panel>
+					<layout:panel region="center" header="false" border="false">
+						<layout:tabLayout id="application" tabPosition="bottom" border="false" jsvar="tabs">
+							<layout:panel title="#{IndexBean.messages.get('IndexBean.help.label')}" height="400" style="height:400px;overflow: auto;">
+								<iframe style="width:100%;height:100%;" 
+									src="help.faces" border="0"
+									vspace="0" hspace="0" marginwidth="0" 
+									marginheight="0" framespacing="0" 
+									frameborder="0" scrolling="no">
+								</iframe>
+							</layout:panel>	
+						</layout:tabLayout>
+					</layout:panel>
+				</layout:borderLayout>
+			</layout:panel>
+			
+			<layout:panel region="south" height="52" header="false" border="false" style="text-align:right">
+				<ajax:updater url="footer.xhtml" style="width:100%;height:100%;overflow:auto;" />
+			</layout:panel>
+		</layout:borderLayout>
+	</w:page>
+</f:view>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Export hibernate mapping file to DB schema. -->
+<project name="hbm2Db" basedir="." default="zip-file">
+    <property name="src.dir" location="${basedir}/src" />
+    <property name="web.dir" location="${basedir}/WebContent" />
+    <property name="hibernate-cfg.dir" location="${basedir}/dbscript"/>
+    <property name="build.dir" location="${basedir}/WebContent/WEB-INF/classes" />
+    <property name="lib.dir" location="${basedir}/WebContent/WEB-INF/lib" />
+    <property name="dbscript.dir" location="${basedir}/dbscript" />
+    <tstamp>
+		<format property="buildnumber" pattern="yyMMdd"/>
+	</tstamp>
+    <target name="war" >
+    	<war destfile="FireflowExample-1.0.0-alpha-build${buildnumber}.war" basedir="${web.dir}"/>
+    </target>
+    
+	<target name="zip-file" depends="war">
+		<zip destfile="Fire_Workflow_Example.zip"
+			basedir="${basedir}"
+			includes="FireflowExample-1.0.0-alpha-build${buildnumber}.war,/src/workflowdefinition/**,Fire-Workflow-Example.pdf">
+		</zip>
+	</target>	    
+</project>    

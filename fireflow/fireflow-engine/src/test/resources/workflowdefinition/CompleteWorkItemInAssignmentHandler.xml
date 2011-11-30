@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="CompleteWorkItemInAssignmentHandler" Name="CompleteWorkItemInAssignmentHandler" DisplayName="CompleteWorkItemInAssignmentHandler" ResourceFile="" ResourceManager="">
+    <fpdl:StartNode Id="CompleteWorkItemInAssignmentHandler.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="36"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="47"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Tasks/>
+    <fpdl:Activities>
+        <fpdl:Activity Id="CompleteWorkItemInAssignmentHandler.Activity1" Name="Activity1" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="75"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="130"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="21"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="CompleteWorkItemInAssignmentHandler.Activity1.Task1" Name="Task1" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="currentUser" DisplayName="currentUser">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignToCurrentUserAndCompleteWorkItemHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+                <fpdl:Task Id="CompleteWorkItemInAssignmentHandler.Activity1.Task2" Name="Task2" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="CompleteWorkItemInAssignmentHandler.Activity2" Name="Activity2" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="377"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="29"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="CompleteWorkItemInAssignmentHandler.Activity2.Task3" Name="Task3" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="test" DisplayName="test">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.engine.taskinstance.AssignmentHandlerMock</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="CompleteWorkItemInAssignmentHandler.Synchronizer1" Name="Synchronizer1">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="291"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="50"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="CompleteWorkItemInAssignmentHandler.EndNode1" Name="EndNode1">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="527"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="48"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="CompleteWorkItemInAssignmentHandler.Transition1" From="CompleteWorkItemInAssignmentHandler.START_NODE" To="CompleteWorkItemInAssignmentHandler.Activity1" Name="Transition1"/>
+        <fpdl:Transition Id="CompleteWorkItemInAssignmentHandler.Transition2" From="CompleteWorkItemInAssignmentHandler.Activity1" To="CompleteWorkItemInAssignmentHandler.Synchronizer1" Name="Transition2"/>
+        <fpdl:Transition Id="CompleteWorkItemInAssignmentHandler.Transition3" From="CompleteWorkItemInAssignmentHandler.Synchronizer1" To="CompleteWorkItemInAssignmentHandler.Activity2" Name="Transition3"/>
+        <fpdl:Transition Id="CompleteWorkItemInAssignmentHandler.Transition4" From="CompleteWorkItemInAssignmentHandler.Activity2" To="CompleteWorkItemInAssignmentHandler.EndNode1" Name="Transition4"/>
+    </fpdl:Transitions>
+</fpdl:WorkflowProcess>

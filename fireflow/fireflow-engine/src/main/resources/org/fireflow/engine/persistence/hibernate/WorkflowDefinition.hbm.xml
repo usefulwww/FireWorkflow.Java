@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class dynamic-update="true"
+		name="org.fireflow.engine.definition.WorkflowDefinition" table="T_FF_DF_WORKFLOWDEF"
+		polymorphism="explicit">
+		<id name="id" type="java.lang.String">
+			<column length="50" name="ID" />
+			<generator class="uuid">
+			</generator>
+		</id>
+
+		<property name="processId" type="java.lang.String">
+			<column length="100" name="PROCESS_ID" not-null="true">
+				<comment>流程id</comment>
+			</column>
+		</property>
+		<property name="definitionType" type="java.lang.String">
+			<column length="100" name="DEFINITION_TYPE" not-null="true">
+				<comment>流程定义文件的类型，默认为fpdl</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column length="100" name="NAME" not-null="true">
+				<comment>流程的名称</comment>
+			</column>
+		</property>
+		<property name="displayName" type="java.lang.String">
+			<column length="128" name="DISPLAY_NAME">
+				<comment>流程的显示名称</comment>
+			</column>
+		</property>
+		<property name="description" type="java.lang.String">
+			<column length="1024" name="DESCRIPTION">
+				<comment>描述</comment>
+			</column>
+		</property>
+		<property name="version" type="java.lang.Integer">
+			<column length="4" name="VERSION" not-null="true">
+				<comment>流程版本号</comment>
+			</column>
+		</property>
+		<property name="state" type="java.lang.Boolean">
+			<column length="1" name="STATE" not-null="true">
+				<comment>发布状态</comment>
+			</column>
+		</property>
+		<property name="uploadUser" type="java.lang.String">
+			<column length="50" name="UPLOAD_USER">
+				<comment>上载人</comment>
+			</column>
+		</property>
+		<property name="uploadTime" type="java.util.Date">
+			<column name="UPLOAD_TIME">
+				<comment>上载时间</comment>
+			</column>
+		</property>
+		<property name="publishUser" type="java.lang.String">
+			<column length="50" name="PUBLISH_USER">
+				<comment>发布人</comment>
+			</column>
+		</property>
+		<property name="publishTime" type="java.util.Date">
+			<column name="PUBLISH_TIME">
+				<comment>发布时间</comment>
+			</column>
+		</property>
+
+		<property name="processContent"
+			type="org.springframework.orm.hibernate3.support.ClobStringType">
+			<column name="PROCESS_CONTENT" />
+		</property>
+
+	</class>
+</hibernate-mapping>

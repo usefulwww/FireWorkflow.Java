@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<head>
+<script>
+		<!--
+		function setContentPaneHeight(){
+			var contentPaneHeight = screen.availHeight-81*3;
+			var theIframe = document.getElementById("#{MainFrameBean.contentPaneName}");
+			
+			theIframe.height = contentPaneHeight;
+		}
+		//-->
+	</script>
+</head>
+<body onload="setContentPaneHeight()" style="margin: 0px">
+<table id="MainFrameTable" width="1010" align="center" border="0">
+	<tr>
+		<td><!-- ***********************标题区********************** -->
+		<div id="banner">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0"
+			bgcolor="#FFFFFF" height="49">
+			<!--DWLayoutTable-->
+			<tr>
+
+				<td valign="middle"><!-- logo 245*52 --> <img
+					src="#{facesContext.externalContext.requestContextPath}/org/fireflow/mainframe/resources/images/logo2.gif"></img>
+				</td>
+
+				<td valign="bottom" align="right" style="color: blue">
+				当前用户:#{MainFrameBean.currentUser.name} 
+				<br />
+				<a
+					href="#{facesContext.externalContext.requestContextPath}/login.jsp">重新登陆</a>
+				</td>
+				<td></td>
+
+			</tr>
+		</table>
+		</div>
+
+		<!-- ******************************主菜单********************************* -->
+		<div id="mainmenu" style="width: 100%"><h:form>
+			<table width="100%">
+				<tr>
+					<td height="24"
+						background="#{facesContext.externalContext.requestContextPath}/org/fireflow/mainframe/resources/images/toolbar_back24.jpg">
+					<t:jscookMenu id="menu2" layout="hbr" theme="ThemeOffice">
+						<t:navigationMenuItems id="navitems"
+							value="#{MainFrameBean.mainMenuItems}" />
+					</t:jscookMenu></td>
+				</tr>
+			</table>
+		</h:form></div>
+
+		<iframe id="#{MainFrameBean.contentPaneName}"
+			name="#{MainFrameBean.contentPaneName}" border="0" FRAMEBORDER="0"
+			height="100%" width="100%" /></td>
+	</tr>
+</table>
+</body>
+</html>

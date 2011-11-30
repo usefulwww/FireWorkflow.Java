@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE apusic-application PUBLIC "-//Apusic//DTD Apusic Application 4.0.2//EN" "http://www.apusic.com/dtds/apusic-application_4_0_2.dtd">
+
+<apusic-application>
+  <module uri="web.war">
+    <web />
+  </module>
+</apusic-application>
+

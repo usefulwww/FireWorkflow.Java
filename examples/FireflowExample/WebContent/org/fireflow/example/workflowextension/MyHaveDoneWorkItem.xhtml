@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<ui:composition
+	template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">
+	<ui:define name="rightPane">
+
+		<div align="center"><span colspan="2"
+			style="font-size: 16px; font-weight: bold">已办工作</span></div>
+		<h:form id="mainForm">
+			<div align="center"><t:commandButton value="查询"
+				action="#{MyWorkItemBean.doQueryMyHaveDoneWorkItems}" /></div>
+			<br />
+			<div align="center"><t:dataTable
+				value="#{MyWorkItemBean.myHaveDoneWorkitems}" var="workItem"
+				headerClass="tableHeader" rowIndexVar="theRowIndex"
+				rowClasses="row1, row2" style="width:90%">
+				<t:column>
+					<f:facet name="header">工单名称</f:facet>
+					<t:outputText value="#{workItem.taskInstance.displayName}" />
+				</t:column>
+				<t:column width="55%">
+					<f:facet name="header">业务信息</f:facet>
+					<t:outputText value="#{workItem.taskInstance.bizInfo}" />
+				</t:column>
+
+				<t:column>
+					<f:facet name="header">当前状态</f:facet>
+
+					<t:outputText value="#{workItem.state==7?'已处理':'已取消'}" />
+				</t:column>
+				<t:column>
+					<f:facet name="header">处理时间</f:facet>
+					<t:outputText value="#{workItem.endTime}" />
+				</t:column>
+				<t:column>
+					<f:facet name="header">处理人</f:facet>
+					<t:outputText value="#{workItem.actorId}" />
+				</t:column>
+			</t:dataTable></div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+
+</html>

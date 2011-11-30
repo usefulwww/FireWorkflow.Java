@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class dynamic-update="true" name="org.fireflow.kernel.impl.Token" table="T_FF_RT_TOKEN">
+    <id name="id" type="java.lang.String">
+      <column length="50" name="ID"/>
+      <generator class="uuid"/>
+    </id>
+    <property name="alive" type="java.lang.Boolean">
+      <column name="ALIVE" not-null="true"/>
+    </property>
+    <property name="value" type="java.lang.Integer">
+      <column name="VALUE" not-null="true"/>
+    </property>
+    <property name="nodeId" type="java.lang.String">
+      <column length="200" name="NODE_ID" not-null="true"/>
+    </property>
+    <property name="processInstanceId" type="java.lang.String">
+      <column length="50" name="PROCESSINSTANCE_ID" not-null="true"/>
+    </property>
+    <property name="stepNumber" type="java.lang.Integer">
+      <column  length="4" name="STEP_NUMBER" not-null="true"/>
+    </property>
+    <property name="fromActivityId" type="java.lang.String">
+      <column length="100" name="FROM_ACTIVITY_ID"/>
+    </property>
+  </class>
+</hibernate-mapping>

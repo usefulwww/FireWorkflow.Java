@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operamasks-config xmlns="http://www.operamasks.org/IoVC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.operamasks.org/IoVC http://www.operamasks.org/schema/operamasks-2.0.xsd ">
+  <!-- 自定义viewMapper实现,此处应设置ViewMapper实现的类全名，若不设置，则viewMapper列表中只有DefaultViewMapper实现 
+		<view-mapper>...</view-mapper> 
+	-->
+  <!-- 配置IoVC中页面和LiteBean的映射规则 
+		<view-mapping> 
+		****页面与LiteBean单独配置**** 
+		<url-pattern>/greeting.xhtml</url-pattern> 
+		<model-bean>HelloBean</model-bean> 
+		
+		****多个页面与多个LiteBean绑定**** 
+		<url-pattern>/sample1.xhtml</url-pattern> 
+		<url-pattern>/sample2.xhtml</url-pattern> 
+		<url-pattern>/sample3.xhtml</url-pattern> 
+		<model-bean>testBean1</model-bean> 
+		<model-bean>testBean2</model-bean> 
+		<model-bean>testBean2</model-bean> 
+		
+		****绝对路径映射规则，如页面相对于WebContent根目录路径为/sample.xhtml,sampleBean满足以下映射规则,如页面相对于WebContent根目录路径为/test/sample.xhtml,test.sampleBean满足以下映射规则**** 
+		<url-pattern>*</url-pattern> 
+		<model-bean>#{~view}Bean</model-bean> 
+		
+		****通配符映射规则，如页面相对于WebContent根目录路径为/sample.xhtml,sampleBean,test.sampleBean都满足以下映射规则 
+		<url-pattern>*</url-pattern> 
+		<model-bean>#{@view}Bean</model-bean> 
+		
+		****单纯用名字映射规则，如页面相对于WebContent根目录路径为/sample.xhtml,sampleBean都满足以下映射规则, 如页面相对于WebContent根目录路径为/test/sample2.xhtml,sample2Bean满足以下映射规则**** 
+		<url-pattern>*</url-pattern> 
+		<model-bean>#{view}Bean</model-bean> 
+		
+		</view-mapping> 
+	-->
+  <!-- 配置元数据扫描策略 
+		扫描元数据时将会扫描c盘根目录下optional.jar,test包及子包下的类 
+		<metadata> 
+		<jar>C:\optional.jar</jar> 
+		<package>test.*</package> 
+		</metadata> 
+	-->
+  <!-- 配置调试选项 
+		<debug-mode> 
+		.... 
+		</debug-mode> 
+	-->
+  <!-- 配置客户端异常处理方式 
+		<client-exception> 
+		不捕捉所有客户端异常 
+		<catch-all>false</catch-all> 
+		不在客户端显示异常 
+		<show-exception>false</show-exception> 
+		</client-exception> 
+	-->
+  <view-mapping>
+    <url-pattern>*</url-pattern>
+    <model-bean>#{View}Bean</model-bean>
+  </view-mapping>
+</operamasks-config>
+

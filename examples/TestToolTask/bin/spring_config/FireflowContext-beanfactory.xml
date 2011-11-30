@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="org.fireflow.example.testtooltask.applicationhandler.BatOutputAppHandler"
+		class="org.fireflow.example.testtooltask.applicationhandler.BatOutputAppHandler">
+	</bean>
+	<bean id="org.fireflow.example.testtooltask.applicationhandler.ErrorHandler"
+		class="org.fireflow.example.testtooltask.applicationhandler.ErrorHandler">
+	</bean>		
+	
+	<bean id="org.fireflow.example.testtooltask.applicationhandler.GetOutputTypeAppHandler"
+		class="org.fireflow.example.testtooltask.applicationhandler.GetOutputTypeAppHandler">
+	</bean>	
+	<bean id="org.fireflow.example.testtooltask.applicationhandler.JavaioOutputAppHandler"
+		class="org.fireflow.example.testtooltask.applicationhandler.JavaioOutputAppHandler">
+	</bean>	
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf12443604637503" configfile="/FireflowExample4AOM/web/WebContent/WEB-INF/faces/faces-config-goodsdeliverprocess.xml">
+  <nodes xsi:type="pageflow:PFPage" name="org/fireflow/example/workflowextension/MyWorkItem" x="122" y="370" id="pf12443605250314" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf12443605250315 pf12443605250316 pf12443605250317" inlinks="pf12443605250315" path="/org/fireflow/example/workflowextension/MyWorkItem.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="org/fireflow/example/goods_deliver_process/PrepareGoods" x="338" y="178" id="pf12443605250318" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf12443605250316" path="/org/fireflow/example/goods_deliver_process/PrepareGoods.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="org/fireflow/example/goods_deliver_process/DeliverGoods" x="338" y="562" id="pf12443605250319" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf12443605250317" path="/org/fireflow/example/goods_deliver_process/DeliverGoods.xhtml"/>
+  <links id="pf12443605250316" target="pf12443605250318" source="pf12443605250314" outcome="org/fireflow/example/goods_deliver_process/PrepareGoods.faces"/>
+  <links id="pf12443605250317" target="pf12443605250319" source="pf12443605250314" outcome="org/fireflow/example/goods_deliver_process/DeliverGoods.faces"/>
+  <links id="pf12443605250315" target="pf12443605250314" source="pf12443605250314" outcome="SELF_VIEW">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>

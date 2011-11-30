@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    <bean id="runtimeContext"
+          class="org.fireflow.engine.RuntimeContext"
+          init-method="initialize">
+        <property name="taskInstanceManager">
+            <ref local="taskInstanceManager"/>
+        </property>
+        <property name="definitionService">
+            <ref local="definitionService4FileSystem"/>
+        </property>
+        <property name="persistenceService">
+            <ref local="persistenceService"/>
+        </property>
+        <property name="conditionResolver">
+            <ref local="conditionResolver"/>
+        </property>
+        <property name="calendarService">
+            <ref local="calendarService"/>
+        </property>
+        <property name="beanFactory">
+            <ref local="springBeanFactory"/>
+        </property>
+        <property name="kernelManager">
+            <ref local="kernelManager"/>
+        </property>
+		<property name="enableTrace">
+			<value>true</value>
+		</property>
+    </bean>
+    
+        <!-- ************ TaskInstance Manager Begin*************************** -->
+    <bean id="taskInstanceManager"
+		      class="org.fireflow.engine.taskinstance.BasicTaskInstanceManager">
+        <property name="defaultTaskInstanceCreator">
+            <ref local="defaultTaskInstanceCreator"/>
+        </property>
+
+        <property name="defaultFormTaskInstanceRunner">
+            <ref local="defaultFormTaskInstanceRunner"/>
+        </property>
+        <property name="defaultToolTaskInstanceRunner">
+            <ref local="defaultToolTaskInstanceRunner"/>
+        </property>
+        <property name="defaultSubflowTaskInstanceRunner">
+            <ref local="defaultSubflowTaskInstanceRunner"/>
+        </property>
+
+        <property name="defaultFormTaskInstanceCompletionEvaluator">
+            <ref local="defaultFormTaskInstanceCompletionEvaluator"/>
+        </property>
+        <property name="defaultToolTaskInstanceCompletionEvaluator">
+            <ref local="defaultToolTaskInstanceCompletionEvaluator"/>
+        </property>
+        <property name="defaultSubflowTaskInstanceCompletionEvaluator">
+            <ref local="defaultSubflowTaskInstanceCompletionEvaluator"/>
+        </property>
+        
+        <property name="defaultTaskInstanceEventListener">
+            <ref local="defaultTaskInstanceEventListener"/>
+        </property>        
+    </bean>
+    <bean id="defaultTaskInstanceCreator" class="org.fireflow.engine.taskinstance.DefaultTaskInstanceCreator">
+    </bean>
+
+    <bean id="defaultFormTaskInstanceRunner" class="org.fireflow.engine.taskinstance.DefaultFormTaskInstanceRunner">
+    </bean>
+    <bean id="defaultToolTaskInstanceRunner" class="org.fireflow.engine.taskinstance.DefaultToolTaskInstanceRunner">
+    </bean>
+    <bean id="defaultSubflowTaskInstanceRunner" class="org.fireflow.engine.taskinstance.DefaultSubflowTaskInstanceRunner">
+    </bean>
+
+    <bean id="defaultFormTaskInstanceCompletionEvaluator" class="org.fireflow.engine.taskinstance.DefaultFormTaskInstanceCompletionEvaluator">
+    </bean>
+    <bean id="defaultToolTaskInstanceCompletionEvaluator" class="org.fireflow.engine.taskinstance.DefaultToolTaskInstanceCompletionEvaluator">
+    </bean>
+    <bean id="defaultSubflowTaskInstanceCompletionEvaluator" class="org.fireflow.engine.taskinstance.DefaultSubflowTaskInstanceCompletionEvaluator">
+    </bean>
+    <bean id="defaultTaskInstanceEventListener" class="org.fireflow.engine.taskinstance.DefaultTaskInstanceEventListener">
+    </bean>
+        <!-- ************ TaskInstance Manager End*************************** -->
+
+        <!-- **************Persistence Begin******************** -->
+    <bean id="persistenceService"
+		      class="org.fireflow.engine.persistence.hibernate.PersistenceServiceHibernateImpl">
+        <property name="sessionFactory">
+    			<ref bean="MyHibernateSessionFactory" />
+    		</property>
+    </bean>
+        <!-- ***************Persistence End******************* -->	
+        
+        <!-- **************workflow Definitions Begin*******  -->
+        <!-- 
+    <bean id="definitionService4DBMS"
+		class="org.fireflow.engine.definition.DefinitionService4DBMS">
+    </bean>  
+     -->      
+    <bean id="definitionService4FileSystem"
+		class="org.fireflow.engine.definition.DefinitionService4FileSystem">
+        <property name="definitionFiles">
+            <list>
+                <value>
+				/process_definition/LeaveApplicationProcess.xml
+                </value>
+            </list>
+        </property>
+    </bean>
+    
+        <!-- **************workflow Definitions End*******  -->
+
+        
+        
+        <!-- **************CalendarService Begin******************** -->
+    <bean id="calendarService"
+		class="org.fireflow.engine.calendar.DefaultCalendarService">
+    </bean>
+        <!-- ***************CalendarService End******************* -->	        
+        
+    
+    <bean id="conditionResolver" class="org.fireflow.engine.condition.ConditionResolver">
+    </bean>
+
+
+    <bean id="springBeanFactory" class="org.fireflow.engine.beanfactory.SpringBeanFactory">
+    </bean>
+        
+        <!-- **************Kernel Manager Begin*************** -->
+    <bean id="kernelManager"
+          class="org.fireflow.kernel.KernelManager">
+        <property name="kernelExtensions">
+            <map>
+                <entry key="org.fireflow.kernel.StartNodeInstance">
+                    <list>
+                        <ref local="startNodeInstanceEventListenser"/>
+                    </list>
+                </entry>
+                <entry key="org.fireflow.kernel.ActivityInstance">
+                    <list>
+                        <ref local="activityInstanceEventListener"/>
+                    </list>
+                </entry>
+                <entry key="org.fireflow.kernel.SynchronizerInstance">
+                    <list>
+                        <ref local="synchronizerInstanceEventListenser"/>
+                    </list>
+                </entry>
+                <entry key="org.fireflow.kernel.EndNodeInstance">
+                    <list>
+                        <ref local="endNodeInstanceEventListenser"/>
+                    </list>
+                </entry>
+                <entry key="org.fireflow.kernel.TransitionInstance">
+                    <list>
+                        <ref local="transitionInstanceEventListenser"/>
+                    </list>
+                </entry>
+                <entry key="org.fireflow.kernel.LoopInstance">
+                    <list>
+                        <ref local="loopInstanceEventListenser"/>
+                    </list>
+                </entry>
+            </map>
+        </property>
+    </bean>
+        <!-- **************Kernel Manager End*************** -->
+        
+        <!-- kernel extensions (begin) -->
+    <bean id="startNodeInstanceEventListenser"
+        class="org.fireflow.engine.kernelextensions.StartNodeInstanceExtension">
+    </bean>
+    <bean id="activityInstanceEventListener"
+        class="org.fireflow.engine.kernelextensions.ActivityInstanceExtension">
+    </bean>
+    <bean id="synchronizerInstanceEventListenser"
+        class="org.fireflow.engine.kernelextensions.SynchronizerInstanceExtension">
+    </bean>
+    <bean id="endNodeInstanceEventListenser"
+        class="org.fireflow.engine.kernelextensions.EndNodeInstanceExtension">
+    </bean>
+    <bean id="transitionInstanceEventListenser"
+        class="org.fireflow.engine.kernelextensions.TransitionInstanceExtension">
+    </bean>
+    <bean id="loopInstanceEventListenser"
+        class="org.fireflow.engine.kernelextensions.LoopInstanceExtension">
+    </bean>
+
+        <!-- kernel extensions  (end)-->
+</beans>

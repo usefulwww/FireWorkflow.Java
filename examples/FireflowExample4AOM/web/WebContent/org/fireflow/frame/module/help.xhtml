@@ -1,0 +1,24 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+	xmlns:ajax="http://www.apusic.com/jsf/ajax" renderKitId="AJAX"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<w:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</w:head>
+	<w:page title="#{mdl.helpBean.messages.helpPageTitle}">
+
+		<layout:absoluteLayout height="390" border="false">
+			<layout:panel width="467" height="145" x="259" y="84" header="false" border="false">
+				<w:panelBox style="width:467px; height: 220px" color="white" color2="#D3E1F1" gradientExtent="170" border="1"
+					borderColor="silver" borderRadius="8" bgcolor="#FFFFFF">
+					<h3><h:outputText value="#{mdl.helpBean.messages.helpPageTitle}" /></h3>
+					<p>1. 日常工作 - 待办工单和已办工单查看</p>
+					<p>2. 商城送货业务 - 商城送货业务发起</p>
+					<p>3. 银行贷款业务 - 贷款业务申请</p>
+					<p>4. 工作流管理 - 流程定义文件上传、流程定义管理、流程实例管理</p>
+					<p>5. 用户管理 - 用户基础数据、归属角色等增删改管理</p>
+				</w:panelBox>
+			</layout:panel>
+		</layout:absoluteLayout>
+	</w:page>
+</f:view>

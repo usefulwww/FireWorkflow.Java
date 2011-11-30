@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Id="process1" Name="process1" DisplayName="单指标新办业务流程">
+    <fpdl:DataFields>
+        <fpdl:DataField Id="process1.dataField1" Name="dataField1" DataType="STRING" InitialValue="initValue4Test"/>
+    </fpdl:DataFields>
+    <fpdl:StartNode Id="process1.start" Name="start" DisplayName="开始"/>
+    <fpdl:Activities>
+        <fpdl:Activity Id="process1.ShouLi" Name="ShouLi" DisplayName="受理" CompletionStrategy="ANY">
+            <fpdl:Description>受理单指标业务</fpdl:Description>
+            <fpdl:Tasks>
+                <fpdl:Task Id="process1.ShouLi.task11" Name="task11" DisplayName="受理" Type="FORM" StartMode="AUTOMATIC" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" Execution="SYNCHR">
+                    <fpdl:EditForm Name="newDzb" DisplayName="单指标受理录入界面">
+                        <fpdl:Uri>/cn/hnisi/gac/DzbxbShouli.faces</fpdl:Uri>
+                    </fpdl:EditForm>
+                    <fpdl:Performer Name="ShouliGang" DisplayName="受理岗操作员">
+                        <fpdl:AssignmentHandler>test.engine.RoleAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+        </fpdl:Activity>
+        <fpdl:Activity Id="process1.HCXZ" Name="HCXZ" DisplayName="核查险种" CompletionStrategy="ALL">
+            <fpdl:Description>核查险种，:)</fpdl:Description>
+            <fpdl:Tasks>
+                <fpdl:Task Id="process1.HCXZ.task21" Name="task21" DisplayName="核查险种" Type="TOOL" StartMode="MANUAL" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="2" Execution="ASYNCHR">
+                    <fpdl:Application Name="app1" DisplayName="Application1">
+                        <fpdl:Description>这是Application1,调用一个后台java类，实现XXX业务</fpdl:Description>
+                        <fpdl:Handler>test.engine.RoleAssignmentHandler</fpdl:Handler>
+                    </fpdl:Application>
+                </fpdl:Task>
+            </fpdl:Tasks>
+        </fpdl:Activity>
+        <fpdl:Activity Id="process1.HCSPYJ" Name="HCSPYJ" DisplayName="核查索赔依据" CompletionStrategy="ALL">
+            <fpdl:Tasks/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="process1.拒赔" Name="拒赔" DisplayName="拒赔" CompletionStrategy="ALL">
+            <fpdl:Tasks/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="process1.赔付" Name="赔付" DisplayName="赔付" CompletionStrategy="ALL">
+            <fpdl:Tasks/>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="process1.分支" Name="分支"/>
+        <fpdl:Synchronizer Id="process1.汇聚" Name="汇聚"/>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="process1.结束1" Name="结束1"/>
+        <fpdl:EndNode Id="process1.结束2" Name="结束2"/>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="process1.1" From="process1.start" To="process1.ShouLi" Name="1"/>
+        <fpdl:Transition Id="process1.2" From="process1.ShouLi" To="process1.分支" Name="2"/>
+        <fpdl:Transition Id="process1.3" From="process1.分支" To="process1.HCXZ" Name="3"/>
+        <fpdl:Transition Id="process1.4" From="process1.分支" To="process1.HCSPYJ" Name="4"/>
+        <fpdl:Transition Id="process1.5" From="process1.HCXZ" To="process1.汇聚" Name="5"/>
+        <fpdl:Transition Id="process1.6" From="process1.HCSPYJ" To="process1.汇聚" Name="6"/>
+        <fpdl:Transition Id="process1.6" From="process1.汇聚" To="process1.拒赔" Name="6"/>
+        <fpdl:Transition Id="process1.8" From="process1.汇聚" To="process1.赔付" Name="8"/>
+        <fpdl:Transition Id="process1.9" From="process1.拒赔" To="process1.结束1" Name="9"/>
+        <fpdl:Transition Id="process1.10" From="process1.赔付" To="process1.结束2" Name="10"/>
+    </fpdl:Transitions>
+    <ExtendedAttributes>
+        <ExtendedAttribute Name="extendAttribute1" Value="1231234"/>
+    </ExtendedAttributes>
+</fpdl:WorkflowProcess>

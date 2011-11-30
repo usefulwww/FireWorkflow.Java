@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class dynamic-update="true" name="org.fireflow.engine.impl.WorkItem" table="T_FF_RT_WORKITEM">
+    <id name="id" type="java.lang.String">
+      <column length="50" name="ID"/>
+      <generator class="uuid"/>
+    </id>
+    <property name="state" type="java.lang.Integer">
+      <column name="STATE" length="1" not-null="true" >
+      	<comment>状态,0=Initialized ,1=Running, 7=Completed,9=Canceled</comment>      	
+      </column>
+    </property>
+    <property name="createdTime" type="java.util.Date" update="false">
+      <column  name="CREATED_TIME" not-null="true">
+      	<comment>创建时间</comment>
+      </column>
+    </property>
+    <property name="claimedTime" type="java.util.Date">
+      <column  name="CLAIMED_TIME">
+      	<comment>签收时间</comment>      
+      </column>
+    </property>
+    <property name="endTime" type="java.util.Date">
+      <column  name="END_TIME">
+      	<comment>结束时间</comment>
+      </column>
+    </property>
+    <property name="actorId" type="java.lang.String" >
+      <column length="50" name="ACTOR_ID" index="idx_wi_creatorid">
+      	<comment>操作者Id</comment>
+      </column>
+    </property>
+    <property name="comments" type="java.lang.String">
+      <column length="1024" name="COMMENTS">
+      	<comment>说明</comment>
+      </column>
+    </property>
+    <many-to-one cascade="none" class="org.fireflow.engine.impl.TaskInstance" column="TASKINSTANCE_ID" fetch="join" lazy="false" name="taskInstance" not-null="true" update="false"/>
+  </class>
+</hibernate-mapping>

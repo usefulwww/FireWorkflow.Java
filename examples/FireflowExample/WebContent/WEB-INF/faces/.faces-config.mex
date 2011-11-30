@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JSFFlowViewLayout version="1.0">
+  <Drawing gridVisible="true" snapOn="true" />
+  <JSFFlowResource path="/login.xhtml" location="30,30" dimension="116,36" />
+  <JSFFlowResource path="/main.xhtml" location="330,30" dimension="110,36" />
+  <JSFFlowResource path="/org/fireflow/example/myworkitem.xhtml" location="480,130" dimension="272,36" />
+  <JSFFlowResource path="/org/fireflow/example/Payment.xhtml" location="30,130" dimension="254,36" />
+  <JSFFlowResource path="/org/fireflow/example/PrepareGoods.xhtml" location="30,230" dimension="284,36" />
+  <JSFFlowResource path="/org/fireflow/example/DeliverGoods.xhtml" location="480,230" dimension="284,36" />
+  <JSFFlowNavigationCase id="/login.xhtml,/login.xhtml,SELF,null" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="88,30" />
+      <AbsolutePoint location="88,-7" />
+      <AbsolutePoint location="213,-7" />
+      <AbsolutePoint location="213,48" />
+      <AbsolutePoint location="146,48" />
+    </AutomaticBendpoints>
+  </JSFFlowNavigationCase>
+  <JSFFlowNavigationCase id="/login.xhtml,/main.xhtml,MAIN_PAGE,null" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="146,63" />
+      <AbsolutePoint location="330,63" />
+    </AutomaticBendpoints>
+  </JSFFlowNavigationCase>
+  <JSFFlowNavigationCase id="/org/fireflow/example/myworkitem.xhtml,/org/fireflow/example/myworkitem.xhtml,SELF,null" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="616,130" />
+      <AbsolutePoint location="616,93" />
+      <AbsolutePoint location="801,93" />
+      <AbsolutePoint location="801,148" />
+      <AbsolutePoint location="752,148" />
+    </AutomaticBendpoints>
+  </JSFFlowNavigationCase>
+  <JSFFlowNavigationCase id="/org/fireflow/example/myworkitem.xhtml,/org/fireflow/example/PrepareGoods.xhtml,org/fireflow/example/PrepareGoods.faces,null" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="480,148" />
+      <AbsolutePoint location="297,148" />
+      <AbsolutePoint location="297,230" />
+    </AutomaticBendpoints>
+  </JSFFlowNavigationCase>
+  <JSFFlowNavigationCase id="/org/fireflow/example/myworkitem.xhtml,/org/fireflow/example/DeliverGoods.xhtml,org/fireflow/example/DeliverGoods.faces,null" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="616,166" />
+      <AbsolutePoint location="616,230" />
+    </AutomaticBendpoints>
+  </JSFFlowNavigationCase>
+  <JSFFlowNavigationCase id="/org/fireflow/example/Payment.xhtml,/org/fireflow/example/Payment.xhtml,SELF,null" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="157,148" />
+      <AbsolutePoint location="157,120" />
+      <AbsolutePoint location="20,120" />
+      <AbsolutePoint location="20,148" />
+      <AbsolutePoint location="157,148" />
+    </AutomaticBendpoints>
+  </JSFFlowNavigationCase>
+  <JSFFlowNavigationCase id="/org/fireflow/example/PrepareGoods.xhtml,/org/fireflow/example/PrepareGoods.xhtml,SELF,null" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="172,230" />
+      <AbsolutePoint location="172,203" />
+      <AbsolutePoint location="382,203" />
+      <AbsolutePoint location="382,248" />
+      <AbsolutePoint location="314,248" />
+    </AutomaticBendpoints>
+  </JSFFlowNavigationCase>
+</JSFFlowViewLayout>
+

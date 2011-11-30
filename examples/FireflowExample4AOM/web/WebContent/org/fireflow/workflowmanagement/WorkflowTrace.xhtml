@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+	<body>
+		<ui:composition template="/main.xhtml">
+			<ui:define name="workspace">
+				<h:form>
+					<table>
+						<tr>
+							<td>
+								流水号:
+								<t:inputText value="#{WorkflowTraceBean.sn}" />
+							</td>
+							<td>
+								<t:commandButton value="查询"
+									action="#{WorkflowTraceBean.doQuery}" />
+							</td>
+						</tr>
+					</table>
+				</h:form>
+				<div align="center">
+					<t:dataTable value="#{WorkflowTraceBean.workItemList}"
+						var="workItem" headerClass="tableHeader" rowClasses="row1, row2"
+						style="width:600px">
+						<t:column>
+							<f:facet name="header">流水号</f:facet>
+							<t:outputText value="#{workItem.taskInstance.sn}" />
+						</t:column>
+						<t:column>
+							<f:facet name="header">货物名称</f:facet>
+							<t:outputText value="#{workItem.taskInstance.goodsName}" />
+						</t:column>
+						<t:column>
+							<f:facet name="header">数量</f:facet>
+							<t:outputText value="#{workItem.taskInstance.quantity}" />
+						</t:column>
+						<t:column>
+							<f:facet name="header">环节名称</f:facet>
+							<t:outputText value="#{workItem.taskInstance.displayName}" />
+						</t:column>
+						<t:column>
+							<f:facet name="header">环节状态</f:facet>
+							<t:outputText value="#{workItem.state==0?'待签收':(workItem.state==1?'待处理':'已处理')}" />
+						</t:column>
+						<t:column>
+							<f:facet name="header">处理人</f:facet>
+							<t:outputText value="#{workItem.actorId}" />
+						</t:column>
+						<t:column>
+							<f:facet name="header">处理时间</f:facet>
+							<t:outputText value="#{workItem.endTime}" />
+						</t:column>						
+					</t:dataTable>
+				</div>
+
+			</ui:define>
+		</ui:composition>
+	</body>
+
+</html>

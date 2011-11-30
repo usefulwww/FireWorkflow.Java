@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:jsfext="http://www.fireflow.org/jsfext">
+<ui:component>
+	<t:dataTable value="#{InstancesDataViewerBean.variableList}"
+		var="variable" headerClass="tableHeader" rowClasses="row1, row2"
+		style="width:90%">
+		<t:column>
+			<f:facet name="header">变量名</f:facet>
+			<t:outputText value="#{variable[0]}" />
+		</t:column>
+		<t:column>
+			<f:facet name="header">变量值</f:facet>
+			<t:outputText value="#{variable[1]}" />
+		</t:column>
+
+	</t:dataTable>
+</ui:component>
+</html>

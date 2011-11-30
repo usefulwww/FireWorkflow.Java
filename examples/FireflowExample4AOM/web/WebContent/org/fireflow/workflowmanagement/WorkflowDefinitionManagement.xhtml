@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:layout="http://www.apusic.com/jsf/layout" xmlns:om="http://www.apusic.com/jsf/misc"
+        renderKitId="AJAX">
+        <w:head>
+                <w:stylesheet src="/common/resources/examples.css" />
+        </w:head>
+        <w:page title="EditGrid Demo">
+                <div align="center" >
+                <p><h3>流程定义管理</h3></p>
+                </div>
+                <br />
+                <w:form style="width:80%;height:80%">
+                        <w:dataGrid id="grid" paged="true" var="definitionInfo" singleSelect="true" rows="10" toolBarPosition="top">
+                        	
+                        	<w:outputColumn header="流程Id" id="processId" />
+                        	<w:outputColumn header="流程名称" id="name" />
+                        	<w:outputColumn header="中文名称" id="displayName" />
+                        	<w:outputColumn header="版本号" id="version" />
+                        	<w:outputColumn header="上载人" id="uploadUser" />
+                        	<w:outputColumn header="上载时间" id="uploadTime" />
+                        	<w:outputColumn header="发布人" id="publishUser" />
+                        	<w:outputColumn header="发布时间" id="publishTime" />
+                        	<w:outputColumn header="发布状态" id="state" value="#{definitionInfo.state==true?'已生效':'未生效'}" />
+                        	
+                        </w:dataGrid>
+                </w:form>
+        </w:page>
+</f:view>

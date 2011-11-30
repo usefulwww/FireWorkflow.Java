@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="com.apusic.studio.dev.ApusicClasspathContainerInitializer/apusicserver/mydomain"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" output="web/WebContent/WEB-INF/classes" path="web/src"/>
+	<classpathentry kind="con" path="com.apusic.studio.dev.WebClasspathContainerInitializer/FireflowExample4AOM/web"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+	<ui:composition template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">
+		<ui:define name="leftPane">
+			<table width="100%" align="center" border="0">
+			
+				<tr>
+					<td align="center">
+
+						<h:form>
+							<t:inputHidden value="#{MyWorkItemBean.selectedWorkItemId}"/>
+							<table>
+								<tr>
+									<td colspan="2" style="font-size: 16px; font-weight: bold"
+										align="center">
+										备货操作
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										流水号：
+									</td>
+									<td>
+										<t:outputText value="#{requestScope.CURRENT_WORKITEM.taskInstance.sn}" />
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										货品名称：
+									</td>
+									<td>
+										<t:outputText value="#{requestScope.CURRENT_WORKITEM.taskInstance.goodsName}" />
+									</td>
+								</tr>
+								<tr>
+									<td align="right">
+										数量：
+									</td>
+									<td>
+										<t:outputText value="#{requestScope.CURRENT_WORKITEM.taskInstance.quantity}" />
+									</td>
+								</tr>
+
+								<tr height="30px">
+									<td></td>
+								</tr>
+								<tr>
+									<td><input value="保存业务操作数据" onclick="alert('保存成功');" type="button"/></td>
+									<td>
+										<t:commandButton value="结束工单"
+											action="#{MyWorkItemBean.completeWorkItem}"/>
+									</td>
+								</tr>
+							</table>
+
+						</h:form>
+					</td>
+				</tr>
+			</table>
+		</ui:define>
+	</ui:composition>
+</html>

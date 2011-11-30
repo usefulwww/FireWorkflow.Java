@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:jsfext="http://www.fireflow.org/jsfext">
+
+<ui:composition
+	template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">
+	<ui:define name="leftPane">
+		<t:saveState value="#{InstancesDataViewerBean.bizDataList}" />
+		<t:saveState value="#{InstancesDataViewerBean.currentObject}" />
+		<t:saveState value="#{InstancesDataViewerBean.taskInstanceList}" />
+		<t:saveState value="#{InstancesDataViewerBean.variableList}" />
+		<h:form>
+			<table>
+				<tr>
+					<td align="right">流程名称:<t:inputText
+						value="#{InstancesDataViewerBean.workflowName4q}">
+
+					</t:inputText> <t:commandButton value="查询"
+						action="#{InstancesDataViewerBean.doBizOperQuery}" /></td>
+				</tr>
+			</table>
+		</h:form>
+		<h:form >
+			<div><t:dataTable
+				value="#{InstancesDataViewerBean.bizDataList}" var="procInst"
+				headerClass="tableHeader" rowClasses="row1, row2" style="width:100%">
+				<t:column>
+					<f:facet name="header">实例Id</f:facet>
+					<t:commandLink value="#{procInst.id}"
+						action="#{InstancesDataViewerBean.onSelectBizData}"
+						target="InstanceDetailsViewer">
+						<f:param name="selectedObjectId" value="#{procInst.id}" />
+					</t:commandLink>
+				</t:column>
+				<t:column>
+					<f:facet name="header">名称/中文名称</f:facet>
+					<t:outputText value="#{procInst.name}" />/<br/>
+					<t:outputText value="#{procInst.displayName}" />
+				</t:column>
+
+				<t:column>
+					<f:facet name="header">版本</f:facet>
+					<t:outputText value="#{procInst.version}" />
+				</t:column>
+				<t:column>
+					<f:facet name="header">状态</f:facet>
+					<t:outputText value="#{Utilities.workflowElementInstanceStates[procInst.state]}" />
+				</t:column>
+				<t:column>
+					<f:facet name="header">是否挂起</f:facet>
+					<t:outputText value="#{procInst.suspended}" />
+				</t:column>
+				<t:column>
+					<f:facet name="header">创建人</f:facet>
+					<t:outputText value="#{procInst.creatorId}" />
+				</t:column>
+				<t:column>
+					<f:facet name="header">创建时间</f:facet>
+					<t:outputText value="#{procInst.createdTime}" />
+				</t:column>
+				<t:column>
+					<f:facet name="header">结束时间</f:facet>
+					<t:outputText value="#{procInst.endTime}" />
+				</t:column>
+				<t:column>
+					<table>
+						<tr>
+							<td><t:commandLink
+								title="Abort process Instance" alt="Abort"
+								action="#{InstancesDataViewerBean.abortProcessInstance}"
+								rendered="#{procInst.state lt 5 }" >
+								<t:graphicImage border="0" url="/org/fireflow/workflowmanagement/resources/images/stop_16.gif"/>
+								<f:param name="selectedObjectId" value="#{procInst.id}" />
+							</t:commandLink>
+								</td>
+							<td><t:commandLink
+								title="Suspend process Instance" alt="Suspend"
+								action="#{InstancesDataViewerBean.suspendProcessInstance}"
+								rendered="#{(procInst.state lt 5) and not procInst.suspended}" >
+								<t:graphicImage border="0" url="/org/fireflow/workflowmanagement/resources/images/suspend.gif"/>
+								<f:param name="selectedObjectId" value="#{procInst.id}" />
+							</t:commandLink>
+							</td>
+							<td><t:commandLink
+								title="Restore process Instance" alt="Restore"
+								action="#{InstancesDataViewerBean.restoreProcessInstance}"
+								rendered="#{(procInst.state lt 5) and procInst.suspended}" >
+								<t:graphicImage border="0" url="/org/fireflow/workflowmanagement/resources/images/restore.gif"/>
+								<f:param name="selectedObjectId" value="#{procInst.id}" />
+								</t:commandLink>
+								</td>
+						</tr>
+					</table>
+				</t:column>
+			</t:dataTable></div>
+		</h:form>
+		<div><iframe id="InstanceDetailsViewer"
+			name="InstanceDetailsViewer" border="0" FRAMEBORDER="0" height="400"
+			width="100%" /></div>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.fireflow.engine.impl.ProcessInstance" table="T_FF_RT_PROCESSINSTANCE">
+		<id name="id" type="java.lang.String">
+			<column length="50" name="ID" />
+			<generator class="uuid" />
+		</id>
+		<property name="processId" type="java.lang.String" update="false">
+			<column length="100" name="PROCESS_ID" not-null="true">
+				<comment>流程id</comment>
+			</column>
+		</property>
+		<property name="version" type="java.lang.Integer" update="false">
+			<column length="4" name="VERSION" not-null="true">
+				<comment>流程版本号</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String" update="false">
+			<column length="100" name="NAME">
+				<comment>流程名称</comment>
+			</column>
+		</property>
+		<property name="displayName" type="java.lang.String" update="false">
+			<column length="128" name="DISPLAY_NAME">
+				<comment>流程显示名称</comment>
+			</column>
+		</property>
+		<property name="state" type="java.lang.Integer">
+			<column length="1" name="STATE" not-null="true">
+				<comment>流程实例状态</comment>
+			</column>
+		</property>
+		<property name="suspended" type="java.lang.Boolean">
+			<column length="1" name="SUSPENDED" not-null="true">
+				<comment>是否被挂起</comment>
+			</column>
+		</property>
+		<property name="creatorId" type="java.lang.String">
+			<column name="CREATOR_ID" length="50">
+				<comment>创建者Id</comment>
+			</column>
+		</property>
+		<property name="createdTime" type="java.util.Date" update="false">
+			<column name="CREATED_TIME">
+				<comment>创建时间</comment>
+			</column>
+		</property>
+		<property name="startedTime" type="java.util.Date">
+			<column name="STARTED_TIME">
+				<comment>启动时间</comment>
+			</column>
+		</property>
+		<property name="expiredTime" type="java.util.Date">
+			<column name="EXPIRED_TIME">
+				<comment>到期时间</comment>
+			</column>
+		</property>
+		<property name="endTime" type="java.util.Date">
+			<column name="END_TIME">
+				<comment>终止时间</comment>
+			</column>
+		</property>
+		<property name="parentProcessInstanceId" type="java.lang.String"
+			update="false">
+			<column length="50" name="PARENT_PROCESSINSTANCE_ID">
+				<comment>父流程实例Id</comment>
+			</column>
+		</property>
+		<property name="parentTaskInstanceId" type="java.lang.String"
+			update="false">
+			<column length="50" name="PARENT_TASKINSTANCE_ID">
+				<comment>父任务实例id</comment>
+			</column>
+		</property>
+		<!--
+			<many-to-one name="parentProcessInstance"
+			column="PARENT_PROCESSINSTANCE_ID"
+			class="org.fireflow.engine.impl.ProcessInstance" update="false"
+			lazy="proxy" cascade="none"/> <set name="taskInstances"
+			cascade="save-update,delete,all-delete-orphan" inverse="true"
+			order-by="CREATED_TIME"> <key column="PROCESSINSTANCE_ID"/>
+			<one-to-many class="org.fireflow.engine.impl.TaskInstance"/> </set>
+
+			<set name="joinPoints" cascade="save-update,delete,all-delete-orphan"
+			inverse="true" order-by="CREATED_TIME"> <key
+			column="PROCESSINSTANCE_ID"/> <one-to-many
+			class="org.fireflow.engine.impl.JoinPoint"/> </set> <set
+			name="tokens" cascade="save-update,delete,all-delete-orphan"
+			inverse="true" order-by="CREATED_TIME"> <key
+			column="PROCESSINSTANCE_ID"/> <one-to-many
+			class="org.fireflow.kenel.impl.Token"/> </set>
+		-->
+		<!-- 为了适应spring jdbc以及JPA，流程变量单独建立映射文件，2009-11-01
+		<map lazy="false" cascade="delete" name="processInstanceVariables" table="T_FF_RT_PROCINST_VAR">
+			<key column="PROCESSINSTANCE_ID" />
+			<map-key column="NAME" type="java.lang.String" />
+			<element column="VALUE"
+				type="org.fireflow.engine.persistence.hibernate.ProcessInstanceVariableType" />
+		</map>
+		 -->
+	</class>
+	
+	<class name="org.fireflow.engine.impl.ProcessInstanceVar" table="T_FF_RT_PROCINST_VAR">
+		<composite-id name="varPrimaryKey" class="org.fireflow.engine.impl.ProcessInstanceVarPk">
+   			<key-property
+    			name="processInstanceId"
+    			column="PROCESSINSTANCE_ID"
+    			type="java.lang.String"
+   			/>
+   			<key-property
+    			name="name"
+    			column="NAME"
+    			type="java.lang.String"
+   			/>
+   		</composite-id>
+		<property name="value" type="org.fireflow.engine.persistence.hibernate.ProcessInstanceVariableType" >
+			<column length="255" name="VALUE">
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

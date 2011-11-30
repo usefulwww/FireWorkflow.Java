@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- hsqldb -->
+	<!-- -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:mem:fireflow" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>
+	<!--  mssql 在spring中直接配置jdbc链接  测试的时候可以使用！
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="net.sourceforge.jtds.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:jtds:sqlserver://localhost:1433/fireflow;SelectMethod=cursor;charset=GBK;tds=8.0;lastupdatecount=true" />
+		<property name="username" value="sa" />
+		<property name="password" value="sa" />
+	</bean>	
+	 -->	
+	<!-- mysql -->
+	<!-- 
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/fireflow?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf8" />
+		<property name="username" value="root" />
+		<property name="password" value="mysql" />
+	</bean>
+	 -->
+	<!-- oracle(没有环境，需要别人来进行测试)  -->
+	<!-- 
+    <bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName"
+			value="oracle.jdbc.OracleDriver">
+        </property>
+        <property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:orcl">
+        </property>
+        <property name="username" value="fireflow"></property>
+        <property name="password" value="fireflow"></property>
+    </bean> 
+	 -->
+	<!-- session factory, 指定了lobHandler -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<!-- oracle 9 需要
+		<property name="lobHandler">
+			<ref bean="oracleLobHandler" />
+		</property>
+		 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect
+					
+					<!-- 各种数据库的方言
+					org.hibernate.dialect.MySQL5InnoDBDialect
+					org.hibernate.dialect.OracleDialect 
+					org.hibernate.dialect.SQLServerDialect
+					-->
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>
+					org/fireflow/engine/persistence/hibernate/ProcessInstanceTrace.hbm.xml
+				</value>
+				<value>
+					org/fireflow/engine/persistence/hibernate/ProcessInstance.hbm.xml
+				</value>
+				<value>
+					org/fireflow/engine/persistence/hibernate/TaskInstance.hbm.xml
+				</value>
+				<value>
+					org/fireflow/engine/persistence/hibernate/Token.hbm.xml
+				</value>
+				<value>
+					org/fireflow/engine/persistence/hibernate/WorkItem.hbm.xml
+				</value>
+				<value>
+					org/fireflow/engine/persistence/hibernate/WorkflowDefinition.hbm.xml
+				</value>
+				<value>
+					org/fireflow/engine/persistence/hibernate/WorkflowDefinitionInfo.hbm.xml
+				</value>
+			</list>
+		</property>
+	</bean>
+
+    <bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    
+    <bean id="hibernateTransactionTemplate"  class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/> 
+        </property>
+    </bean>
+
+	<bean id="fireWorkflowHelperDao" class="org.fireflow.engine.persistence.hibernate.FireWorkflowHelperDao">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    
+</beans>

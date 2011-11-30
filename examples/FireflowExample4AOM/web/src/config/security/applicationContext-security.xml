@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  - Sample namespace-based configuration
+  -
+  - $Id: applicationContext-security.xml 3019 2008-05-01 17:51:48Z luke_t $
+  -->
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.1.xsd">
+
+	<global-method-security secured-annotations="enabled">
+		<!-- AspectJ pointcut expression that locates our "post" method and applies security that way
+		<protect-pointcut expression="execution(* bigbank.*Service.post*(..))" access="ROLE_TELLER"/>
+		-->
+	</global-method-security>
+
+    <http>
+    	<intercept-url pattern="/login.*" filters="none"/>
+    	<intercept-url pattern="/faces/myFacesExtensionResource/**" filters="none"/>
+    	<intercept-url pattern="/**/*.js" filters="none"/>
+    	<intercept-url pattern="/**/*.css" filters="none"/>
+    	<intercept-url pattern="/**/*.gif" filters="none"/>
+    	<intercept-url pattern="/**/*.jpg" filters="none"/>
+    	<intercept-url pattern="/**/*.pdf" filters="none"/>
+
+        <intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+<!--
+    Uncomment to enable X509 client authentication support
+        <x509 /> 
+-->
+
+
+        <form-login
+        	login-page="/login.jsp" 
+        	default-target-url="/org/fireflow/frame/module/index.faces"
+        	authentication-failure-url="/login.jsp"
+        />
+        <anonymous />
+        <http-basic />
+        <logout />
+        <remember-me />
+
+        <!-- Uncomment to limit the number of sessions a user can have
+        <concurrent-session-control max-sessions="1" exception-if-maximum-exceeded="true"/>
+		-->		
+    </http>
+
+    <!--
+    Usernames/Passwords are
+        rod/koala
+        dianne/emu
+        scott/wombat
+        peter/opal
+    -->
+    <authentication-provider user-service-ref="securityManager">
+        <password-encoder hash="md5"/>
+        <!-- 
+        <user-service>
+            <user name="rod" password="a564de63c2d0da68cf47586ee05984d7" authorities="ROLE_SUPERVISOR, ROLE_USER, ROLE_TELLER" />
+	        <user name="dianne" password="65d15fe9156f9c4bbffd98085992a44e" authorities="ROLE_USER,ROLE_TELLER" />
+            <user name="scott" password="2b58af6dddbd072ed27ffc86725d7d3a" authorities="ROLE_USER" />
+            <user name="peter" password="22b5c9accc6e1ba628cedc63a72d57f8" authorities="ROLE_USER" />
+	    </user-service>
+	     -->
+	</authentication-provider>
+	
+	<beans:bean id="securityManager" class="org.fireflow.security.mbeans.SecurityManager">
+		<beans:property name="userDAO">
+			<beans:ref bean="UserDAO"/>
+		</beans:property>
+	</beans:bean>
+
+</beans:beans>

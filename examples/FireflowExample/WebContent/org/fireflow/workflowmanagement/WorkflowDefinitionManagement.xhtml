@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:jsfext="http://www.fireflow.org/jsfext">
+
+<ui:composition
+	template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">
+		<ui:define name="leftPane">
+		<h:form>
+			<table>
+				<tr>
+					<td align="right">流程名称:<t:inputText
+						value="#{WorkflowDefinitionManagementBean.workflowName4q}">
+
+					</t:inputText></td>
+
+					<td align="right">版本号<t:inputText
+						value="#{WorkflowDefinitionManagementBean.version4q}" /></td>
+
+					<td align="right"><t:commandButton value="查询"
+						action="#{WorkflowDefinitionManagementBean.doBizOperQuery}" /></td>
+				</tr>
+			</table>
+			
+			<div>
+				<t:dataTable value="#{WorkflowDefinitionManagementBean.bizDataList}"
+						var="definitionInfo" headerClass="tableHeader" rowClasses="row1, row2"
+						style="width:90%">
+						<t:column>
+							<f:facet name="header">流程Id</f:facet>
+							<t:outputText value="#{definitionInfo.processId}" />
+						</t:column>
+						<t:column>
+							<f:facet name="header">流程名称</f:facet>
+							<t:outputText value="#{definitionInfo.name}" />
+						</t:column>
+						<t:column>
+							<f:facet name="header">中文名称</f:facet>
+							<t:outputText value="#{definitionInfo.displayName}" />
+						</t:column>		
+						<t:column>
+							<f:facet name="header">版本号</f:facet>
+							<t:outputText value="#{definitionInfo.version}" />
+						</t:column>			
+						<t:column>
+							<f:facet name="header">上载人</f:facet>
+							<t:outputText value="#{definitionInfo.uploadUser}" />
+						</t:column>	
+						<t:column>
+							<f:facet name="header">上载时间</f:facet>
+							<t:outputText value="#{definitionInfo.uploadTime}" />
+						</t:column>							
+						<t:column>
+							<f:facet name="header">发布人</f:facet>
+							<t:outputText value="#{definitionInfo.publishUser}" />
+						</t:column>	
+						<t:column>
+							<f:facet name="header">发布时间</f:facet>
+							<t:outputText value="#{definitionInfo.publishTime}" />
+						</t:column>		
+						<t:column>
+							<f:facet name="header">发布状态</f:facet>
+							<t:outputText value="#{definitionInfo.state==true?'已生效':'未生效'}" />
+						</t:column>																												
+				</t:dataTable>			
+			</div>
+			</h:form>
+		</ui:define>
+</ui:composition>
+</html>

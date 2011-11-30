@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+
+
+	<application>
+		<variable-resolver>
+			org.springframework.web.jsf.DelegatingVariableResolver
+		</variable-resolver>
+		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+	</application>
+	<managed-bean>
+		<managed-bean-name>PaymentBean</managed-bean-name>
+		<managed-bean-class>
+			org.fireflow.example.mbeans.PaymentBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>tradeInfoDao</property-name>
+			<value>#{TradeInfoDAO}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>workflowRuntimeContext</property-name>
+			<value>#{runtimeContext}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>transactionManager</property-name>
+			<value>#{hTransactionManager}</value>
+		</managed-property>
+
+	</managed-bean>
+	
+	<managed-bean>
+		<managed-bean-name>DeliverGoodsBean</managed-bean-name>
+		<managed-bean-class>
+			org.fireflow.example.mbeans.DeliverGoodsBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>tradeInfoDao</property-name>
+			<value>#{TradeInfoDAO}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>transactionManager</property-name>
+			<value>#{hTransactionManager}</value>
+		</managed-property>
+	</managed-bean>	
+		
+	<managed-bean>
+		<managed-bean-name>PrepareGoodsBean</managed-bean-name>
+		<managed-bean-class>
+			org.fireflow.example.mbeans.PrepareGoodsBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>tradeInfoDao</property-name>
+			<value>#{TradeInfoDAO}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>transactionManager</property-name>
+			<value>#{hTransactionManager}</value>
+		</managed-property>
+	</managed-bean>	
+	
+	<managed-bean>
+		<managed-bean-name>MyWorkItemBean</managed-bean-name>
+		<managed-bean-class>
+			org.fireflow.example.mbeans.MyWorkItemBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>workflowRuntimeContext</property-name>
+			<value>#{runtimeContext}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>transactionManager</property-name>
+			<value>#{hTransactionManager}</value>
+		</managed-property>
+	</managed-bean>	
+	
+	<managed-bean>
+		<managed-bean-name>WorkflowTraceBean</managed-bean-name>
+		<managed-bean-class>
+			org.fireflow.example.mbeans.WorkflowTraceBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>commonDAO</property-name>
+			<value>#{CommonDAO}</value>
+		</managed-property>
+	</managed-bean>		
+	
+	<managed-bean>
+		<managed-bean-name>LoginBean</managed-bean-name>
+		<managed-bean-class>
+			org.fireflow.example.mbeans.LoginBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	
+	
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SELF</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>MAIN_PAGE</from-outcome>
+			<to-view-id>/main.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/org/fireflow/example/Payment.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SELF</from-outcome>
+			<to-view-id>/org/fireflow/example/Payment.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>		
+	<navigation-rule>
+		<from-view-id>/org/fireflow/example/PrepareGoods.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SELF</from-outcome>
+			<to-view-id>/org/fireflow/example/PrepareGoods.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	<navigation-rule>
+		<from-view-id>/org/fireflow/example/MyWorkItem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SELF</from-outcome>
+			<to-view-id>/org/fireflow/example/MyWorkItem.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>org/fireflow/example/PrepareGoods.faces</from-outcome>
+			<to-view-id>/org/fireflow/example/PrepareGoods.xhtml</to-view-id>
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>org/fireflow/example/DeliverGoods.faces</from-outcome>
+			<to-view-id>/org/fireflow/example/DeliverGoods.xhtml</to-view-id>
+		</navigation-case>				
+	</navigation-rule>	
+	
+	<navigation-rule>
+		<from-view-id>/org/fireflow/example/PrepareGoods.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>MyWorkItemView</from-outcome>
+			<to-view-id>/org/fireflow/example/MyWorkItem.xhtml</to-view-id>
+		</navigation-case>	
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/org/fireflow/example/DeliverGoods.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>MyWorkItemView</from-outcome>
+			<to-view-id>/org/fireflow/example/MyWorkItem.xhtml</to-view-id>
+		</navigation-case>	
+	</navigation-rule>	
+</faces-config>
+

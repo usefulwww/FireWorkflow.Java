@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+<ui:composition
+	template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">
+	<ui:define name="rightPane">
+		<t:saveState value="#{RiskEvaluateInfoBean.loanInfo}" />
+		<t:saveState value="#{RiskEvaluateInfoBean.currentProcessInstanceId}" />
+		<h:form>
+			<t:inputHidden value="#{MyWorkItemBean.selectedWorkItemId}" />
+			<div align="center"><span
+				style="font-size: 16pt; font-weight: bold">某银行贷款审批表</span></div>
+			<div style="border: 1px solid blue" align="center"><ui:include
+				src="/org/fireflow/example/loan_process/Form.xhtml">
+				<ui:param name="LoanInfo" value="#{RiskEvaluateInfoBean.loanInfo}" />
+				<ui:param name="section" value="2" />
+			</ui:include></div>
+			
+			<div align="center"><t:commandButton value="保存"
+				action="#{RiskEvaluateInfoBean.doSaveBizData}" /> <t:commandButton
+				value="结束工单" action="#{MyWorkItemBean.completeWorkItem}" /></div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:jsfext="http://www.fireflow.org/jsfext">
+<ui:composition
+	template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">
+	<ui:define name="leftPane">
+		<t:saveState value="#{InstancesDataViewerBean.bizDataList}" />
+		<t:saveState value="#{InstancesDataViewerBean.currentObject}" />
+		<t:saveState value="#{InstancesDataViewerBean.taskInstanceList}" />
+		<t:saveState value="#{InstancesDataViewerBean.variableList}" />
+		<h:form>
+
+
+			<jsfext:panelTabbedPane serverSideTabSwitch="true" width="100%">
+
+				<t:panelTab id="taskInstancesList" label="Task实例列表">
+					<ui:include
+						src="/org/fireflow/workflowmanagement/instances_data_viewer/TaskInstanceListViewer.xhtml" />
+				</t:panelTab>
+
+				<t:panelTab id="processInstanceAndVariable" label="流程变量">
+					<ui:include
+						src="/org/fireflow/workflowmanagement/instances_data_viewer/ProcessInstanceVariableViewer.xhtml" />
+				</t:panelTab>
+
+			</jsfext:panelTabbedPane>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

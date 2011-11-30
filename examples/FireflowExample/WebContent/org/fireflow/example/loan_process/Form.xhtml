@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+<ui:component>
+
+	<table width="800">
+		<tr style="display: #{(section >= 1)?'':'none'}"><td colspan="2" align="center">
+				<span
+			style="font-size: 12pt; font-weight: bold">申请信息</span>	
+			</td>
+		</tr>
+		<tr style="display: #{(section >= 1)?'':'none'}">
+			<td align="right"><t:outputLabel value="申请人姓名"
+				for="applicantName" />:</td>
+			<td><t:inputText id="applicantName"
+				value="#{LoanInfo.applicantName}" required="true"  disabled="#{section!=1}"/><span
+				style="color: red">*</span> <t:message for="applicantName"
+				errorStyle="color:red;font-size:10pt" /></td>
+		</tr>
+		<tr style="display: #{(section >= 1)?'':'none'}">
+			<td align="right"><t:outputLabel value="申请人身份证号码"
+				for="applicantId" />:</td>
+			<td><t:inputText id="applicantId"
+				value="#{LoanInfo.applicantId}" required="true"  disabled="#{section!=1}"/><span
+				style="color: red">*</span> <t:message for="applicantId"
+				errorStyle="color:red;font-size:10pt" /></td>
+		</tr>
+		<tr style="display: #{(section >= 1)?'':'none'}">
+			<td align="right"><t:outputLabel value="申请人家庭住址" for="address" />:</td>
+
+			<td colspan="3"><t:inputText id="address"
+				value="#{LoanInfo.address}" required="true" size="50"  disabled="#{section!=1}"/><span
+				style="color: red">*</span> <t:message for="address"
+				errorStyle="color:red;font-size:10pt" /></td>
+		</tr>
+
+		<tr style="display: #{(section >= 1)?'':'none'}">
+			<td align="right"><t:outputLabel value="申请人年收入(元)" for="salary" />:</td>
+			<td><t:inputText id="salary" value="#{LoanInfo.salary}"
+				required="true"  disabled="#{section!=1}"/><span style="color: red">*</span><t:message
+				for="salary" errorStyle="color:red;font-size:10pt" /></td>
+		</tr>
+		<tr style="display: #{(section >= 1)?'':'none'}">
+			<td align="right"><t:outputLabel value="贷款额" for="loanValue" />:</td>
+
+			<td><t:inputText value="#{LoanInfo.loanValue}" id="loanValue"
+				required="true"  disabled="#{section!=1}"/><span style="color: red">*</span> <t:message
+				for="loanValue" errorStyle="color:red;font-size:10pt" /></td>
+		</tr>
+		<tr style="display: #{(section >= 1)?'':'none'}">
+			<td align="right"><t:outputLabel value="还贷日期(yyyyMMdd)"
+				for="returnDate" />:</td>
+			<td><t:inputText id="returnDate" value="#{LoanInfo.returnDate}"
+				required="true"  disabled="#{section!=1}"/><span style="color: red">*</span><t:message
+				for="returnDate" errorStyle="color:red;font-size:10pt" /></td>
+		</tr>
+
+
+		<tr style="display: #{(section >= 1)?'':'none'}">
+			<td align="right"><t:outputLabel value="信贷员" for="loanteller" />:</td>
+			<td><t:outputText id="loanteller" value="#{LoanInfo.loanteller}"
+				required="true" /><t:message
+				for="loanteller" errorStyle="color:red;font-size:10pt" /></td>
+		</tr>
+		<tr style="display: #{(section >= 1)?'':'none'}">
+			<td align="right"><t:outputLabel value="信息录入时间(yyyyMMdd)"
+				for="appInfoInputDate" />:</td>
+			<td><t:outputText id="appInfoInputDate"
+				value="#{LoanInfo.appInfoInputDate}" required="true">
+				<f:convertDateTime pattern="yyyyMMdd" />
+			</t:outputText><t:message for="appInfoInputDate"
+				errorStyle="color:red;font-size:10pt" /></td>
+		</tr>
+
+		<tr style="display: #{(section >= 2)?'':'none'}">
+			<td align="center" colspan="2"><span
+				style="font-size: 12pt; font-weight: bold">风险评估信息</span></td>
+		</tr>
+		<tr style="display: #{(section >= 2)?'':'none'}">
+
+			<td align="right"><t:outputLabel value="收入状况是否属实"
+				for="salaryIsReal" />:</td>
+			<td><t:selectOneMenu id="salaryIsReal"
+				value="#{LoanInfo.salaryIsReal}" disabled="#{section!=2}">
+				<f:selectItem itemLabel="属实" itemValue="#{true}"/>
+				<f:selectItem itemLabel="不属实" itemValue="#{false}"/>
+				</t:selectOneMenu> <t:message for="salaryIsReal"
+				errorStyle="color:red;font-size:10pt" /></td>
+		</tr>
+		<tr style="display: #{(section >= 2)?'':'none'}">
+			<td align="right"><t:outputLabel value="信用状况是否合格"
+				for="creditStatus" />:</td>
+			<td><t:selectOneMenu id="creditStatus"
+				value="#{LoanInfo.creditStatus}"  disabled="#{section!=2}">
+				<f:selectItem itemLabel="合格" itemValue="#{true}"/>
+				<f:selectItem itemLabel="不合格" itemValue="#{false}"/>				
+				</t:selectOneMenu>
+				 <t:message for="creditStatus"
+				errorStyle="color:red;font-size:10pt" /></td>
+
+		</tr>
+		<tr style="display: #{(section >= 2)?'':'none'}">
+			<td align="right"><t:outputLabel value="评估人" for="riskEvaluator" />:</td>
+			<td><t:outputText id="riskEvaluator"
+				value="#{LoanInfo.riskEvaluator}" /> </td>
+		</tr>
+		<tr style="display: #{(section >= 2)?'':'none'}">
+			<td align="right"><t:outputLabel value="评估信息录入时间"
+				for="riskInfoInputDate" />:</td>
+			<td><t:outputText id="riskInfoInputDate"
+				value="#{LoanInfo.riskInfoInputDate}" /> </td>
+		</tr>
+
+
+
+
+		<tr style="display: #{(section >=4)?'':'none'}">
+			<td align="center" colspan="2"><span
+				style="font-size: 12pt; font-weight: bold">审批信息</span></td>
+		</tr>
+		<tr style="display: #{(section >=4)?'':'none'}">
+			<td align="right"><t:outputLabel value="审批结论" for="decision"/>:</td>
+			<td><t:outputText id="decision" value="#{LoanInfo.decision}" /></td>
+		</tr>
+		<tr style="display: #{(section >=4)?'':'none'}">
+			<td align="right"><t:outputLabel value="当前审批员" for="examinerList"/>:</td>
+			<td><t:inputTextarea id="examinerList" value="#{LoanInfo.examinerList}" disabled="true"/></td>
+		</tr>
+		<tr style="display: #{(section >=4)?'':'none'}">
+			<td align="right"><t:outputLabel value="当前同意贷款的审批员" for="approverList"/>:</td>
+			<td><t:inputTextarea id="approverList" value="#{LoanInfo.approverList}"  disabled="true"/></td>
+		</tr>
+		<tr style="display: #{(section >=4)?'':'none'}">
+			<td align="right"><t:outputLabel value="当前不同意贷款的审批员" for="opponentList"/>:</td>
+			<td><t:inputTextarea id="opponentList" value="#{LoanInfo.opponentList}"  disabled="true"/></td>
+		</tr>
+		
+		
+
+		<tr style="display: #{(section ==6)?'':'none'}">
+			<td align="center" colspan="2"><span
+				style="font-size: 12pt; font-weight: bold">放款信息</span></td>
+		</tr>
+
+		<tr style="display: #{(section ==6)?'':'none'}">
+			<td align="right"><t:outputLabel value="放款纪录" for="lendMoneyInfo"/>:</td>
+			<td><t:inputTextarea id="lendMoneyInfo"
+				value="#{LoanInfo.lendMoneyInfo}" /></td>
+		</tr>
+		<tr style="display: #{(section ==6)?'':'none'}">
+			<td align="right"><t:outputLabel value="放款操作人" for="lendMoneyOfficer"/>:</td>
+			<td><t:outputText id="lendMoneyOfficer" value="#{LoanInfo.lendMoneyOfficer}" /></td>
+		</tr>
+		<tr style="display: #{(section ==6)?'':'none'}">
+			<td align="right"><t:outputLabel value="放款信息录入时间人" for="lendMoneyInfoInputTime"/>:</td>
+			<td><t:outputText id="lendMoneyInfoInputTime"
+				value="#{LoanInfo.lendMoneyInfoInputTime}" /></td>
+		</tr>
+
+
+
+		<tr style="display: #{(section ==7)?'':'none'}">
+			<td align="center" colspan="2"><span
+				style="font-size: 12pt; font-weight: bold">拒绝贷款信息</span></td>
+		</tr>
+		<tr style="display: #{(section ==7)?'':'none'}">
+			<td align="right"><t:outputLabel value="拒绝贷款备注" for="rejectInfo"/>:</td>
+			<td><t:inputTextarea id="rejectInfo"
+				value="#{LoanInfo.rejectInfo}" /></td>
+		</tr>
+		<tr style="display: #{(section ==7)?'':'none'}">
+			<td align="right"><t:outputText value="信贷员" for="loanteller2"/>:</td>
+			<td><t:outputText id="loanteller2" value="#{LoanInfo.loanteller}" /></td>
+		</tr>
+		<tr style="display: #{(section ==7)?'':'none'}">
+			<td align="right"><t:outputLabel value="拒绝贷款信息录入时间人" for="rejectInfoInputTime"/>:</td>
+			<td><t:outputText id="rejectInfoInputTime"
+				value="#{LoanInfo.rejectInfoInputTime}" /></td>
+		</tr>
+	</table>
+
+
+</ui:component>
+</html>

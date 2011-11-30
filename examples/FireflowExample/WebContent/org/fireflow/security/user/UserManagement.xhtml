@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:jsfext="http://www.fireflow.org/jsfext">
+
+<ui:composition
+	template="/org/fireflow/mainframe/ContentPaneTemplate.xhtml">
+	<ui:define name="BizTitleAndContextMenu">
+		<t:saveState value="#{UserManagementBean.bizDataList}" />
+		<t:saveState value="#{UserManagementBean.selectedObjectId}" />
+		<t:saveState value="#{UserManagementBean.currentObject}" />
+		<t:saveState value="#{UserManagementBean.isCreatOperation}" />
+	</ui:define>
+	<ui:define name="leftPane">
+		<h:form>
+			<table>
+				<tr>
+					<td align="right">所属部门:<t:inputText
+						value="#{UserManagementBean.departmentCode4Query}">
+
+					</t:inputText></td>
+				</tr>
+				<tr>
+					<td align="right">用户Id<t:inputText
+						value="#{UserManagementBean.loginid4Query}" /></td>
+				</tr>
+				<tr>
+					<td align="right"><t:commandButton value="查询"
+						action="#{UserManagementBean.doBizOperQuery}" /></td>
+				</tr>
+			</table>
+
+			<div align="center"><jsfext:dataTable
+				value="#{UserManagementBean.bizDataList}" var="user"
+				rowIndexVar="theRowIndex" style="width:600px">
+				<t:column>
+					<f:facet name="header">
+					</f:facet>
+					<jsfext:rowAction action="#{UserManagementBean.onSelectBizData}" target="userEditPanel">
+						<f:param name="selectedObjectId" value="#{user.id}" />
+					</jsfext:rowAction>
+					<div align="center"><t:outputText value="#{theRowIndex+1}" />
+					</div>
+				</t:column>
+				<t:column>
+					<f:facet name="header">用户Id</f:facet>
+					<t:outputText value="#{user.loginid}" />
+				</t:column>
+				<t:column>
+					<f:facet name="header">姓名</f:facet>
+					<t:outputText value="#{user.name}" />
+				</t:column>
+				<t:column>
+					<f:facet name="header">所属部门</f:facet>
+					<t:outputText value="#{user.departmentName}" />
+				</t:column>
+				<f:facet name="footer">
+					<jsfext:dataTableController></jsfext:dataTableController>
+				</f:facet>
+			</jsfext:dataTable></div>
+		</h:form>
+	</ui:define>
+		<ui:define name="rightPane">
+		<iframe id="userEditPanel" name="userEditPanel" wisth="500" height="400"/>
+		</ui:define>
+</ui:composition>
+</html>	

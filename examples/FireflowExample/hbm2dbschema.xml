@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Export hibernate mapping file to DB schema. -->
+<project name="hbm2Db" basedir="." default="schemaexport_4_mysql">
+    <property name="src.dir" location="${basedir}/src" />
+    <property name="web.dir" location="${basedir}/WebContent" />
+    <property name="hibernate-cfg.dir" location="${basedir}/dbscript"/>
+    <property name="build.dir" location="${basedir}/WebContent/WEB-INF/classes" />
+    <property name="lib.dir" location="${basedir}/WebContent/WEB-INF/lib" />
+    <property name="dbscript.dir" location="${basedir}/dbscript" />
+
+
+    <path  id="hibernate.schemaexport.classpath">
+        <path   >
+            <fileset dir="${lib.dir}" >
+                <include name="*.jar" />
+            </fileset >
+            <pathelement path="${build.dir}" />       
+        </path>
+    </path>
+
+    
+    <target name="schemaexport_4_mysql" >
+
+        <taskdef  name="schemaexport"  
+            classpathref="hibernate.schemaexport.classpath"
+            classname="org.hibernate.tool.hbm2ddl.SchemaExportTask" 
+             >
+        </taskdef >
+
+        <schemaexport config="${hibernate-cfg.dir}/fireflow_4_mysql.hibernate.cfg.xml"
+        quiet="no"
+        text="yes"
+        drop="no"
+        delimiter=";"
+        output="${hibernate-cfg.dir}/mysql/2_example_tables.sql">
+            <fileset dir="${build.dir}">
+                        <include name="**/*.hbm.xml"/>
+            </fileset>
+            <fileset dir="${dbscript.dir}">
+            	<include name="/tmp/*.hbm.xml"/>
+            </fileset>
+        </schemaexport>
+    </target>
+    
+    <target name="schemaexport_4_oracle" >
+
+        <taskdef  name="schemaexport"  
+            classpathref="hibernate.schemaexport.classpath"
+            classname="org.hibernate.tool.hbm2ddl.SchemaExportTask" 
+             >
+        </taskdef >
+
+        <schemaexport config="${hibernate-cfg.dir}/fireflow_4_oracle.hibernate.cfg.xml"
+        quiet="no"
+        text="yes"
+        drop="no"
+        delimiter=";"
+        output="${hibernate-cfg.dir}/oracle/2_example_tables.sql">
+            <fileset dir="${build.dir}">
+                        <include name="**/*.hbm.xml"/>
+            </fileset>
+            <fileset dir="${dbscript.dir}">
+            	<include name="/tmp/*.hbm.xml"/>
+            </fileset>            
+        </schemaexport>
+    </target>    
+    
+    <target name="schemaexport_4_hsqldb" >
+
+        <taskdef  name="schemaexport"  
+            classpathref="hibernate.schemaexport.classpath"
+            classname="org.hibernate.tool.hbm2ddl.SchemaExportTask" 
+             >
+        </taskdef >
+
+        <schemaexport config="${hibernate-cfg.dir}/fireflow_4_hsqldb.hibernate.cfg.xml"
+        quiet="no"
+        text="yes"
+        drop="no"
+        delimiter=";"
+        output="${hibernate-cfg.dir}/hsqldb/2_example_tables.sql">
+            <fileset dir="${build.dir}">
+                        <include name="**/*.hbm.xml"/>
+            </fileset>
+            <fileset dir="${dbscript.dir}">
+            	<include name="/tmp/*.hbm.xml"/>
+            </fileset>            
+        </schemaexport>
+    </target>      
+    
+    <target name="schemaexport_4_sqlserver" >
+
+        <taskdef  name="schemaexport"  
+            classpathref="hibernate.schemaexport.classpath"
+            classname="org.hibernate.tool.hbm2ddl.SchemaExportTask" 
+             >
+        </taskdef >
+
+        <schemaexport config="${hibernate-cfg.dir}/fireflow_4_sqlserver.hibernate.cfg.xml"
+        quiet="no"
+        text="yes"
+        drop="no"
+        delimiter=";"
+        output="${hibernate-cfg.dir}/sqlserver/2_example_tables.sql">
+            <fileset dir="${build.dir}">
+                        <include name="**/*.hbm.xml"/>
+            </fileset>
+            <fileset dir="${dbscript.dir}">
+            	<include name="/tmp/*.hbm.xml"/>
+            </fileset>            
+        </schemaexport>
+    </target>          
+
+</project>

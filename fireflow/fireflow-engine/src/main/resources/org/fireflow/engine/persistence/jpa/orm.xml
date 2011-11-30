@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+	version="1.0">
+	<entity class="org.fireflow.engine.definition.WorkflowDefinitionInfo"
+		access="FIELD">
+		<table name="T_FF_DF_WORKFLOWDEF" />
+		<inheritance strategy="SINGLE_TABLE" />
+		<attributes>
+			<id name="id">
+				<column name="ID" length="50" />
+			</id>
+			<basic name="processId">
+				<column name="PROCESS_ID" length="100" nullable="false" />
+			</basic>
+			<basic name="definitionType">
+				<column name="DEFINITION_TYPE" length="100" nullable="false" />
+			</basic>
+			<basic name="name">
+				<column name="NAME" length="100" nullable="false" />
+			</basic>
+			<basic name="displayName">
+				<column name="DISPLAY_NAME" length="128" />
+			</basic>
+			<basic name="description">
+				<column name="DESCRIPTION" length="1024" />
+			</basic>
+			<basic name="version">
+				<column name="VERSION" length="4" nullable="false" />
+			</basic>
+			<basic name="state">
+				<column name="STATE" length="1" nullable="false" />
+			</basic>
+			<basic name="uploadUser">
+				<column name="UPLOAD_USER" length="50" />
+			</basic>
+			<basic name="uploadTime">
+				<column name="UPLOAD_TIME" />
+			</basic>
+			<basic name="publishUser">
+				<column name="PUBLISH_USER" length="50" />
+			</basic>
+			<basic name="publishTime">
+				<column name="PUBLISH_TIME" />
+			</basic>
+		</attributes>
+	</entity>
+	<entity class="org.fireflow.engine.definition.WorkflowDefinition"
+		access="FIELD">
+		<attributes>
+			<basic name="processContent">
+				<column name="PROCESS_CONTENT" />
+				<lob />
+			</basic>
+		</attributes>
+	</entity>
+
+	<entity class="org.fireflow.engine.impl.ProcessInstanceTrace"
+		access="FIELD">
+		<table name="T_FF_HIST_TRACE" />
+		<attributes>
+			<id name="id">
+				<column name="ID" length="50" />
+			</id>
+			<basic name="processInstanceId">
+				<column name="PROCESSINSTANCE_ID" length="50" nullable="false" />
+			</basic>
+			<basic name="stepNumber">
+				<column name="STEP_NUMBER" length="4" nullable="false" />
+			</basic>
+			<basic name="minorNumber">
+				<column name="MINOR_NUMBER" length="4" nullable="false" />
+			</basic>
+			<basic name="type">
+				<column name="TYPE" length="15" nullable="false" />
+			</basic>
+			<basic name="edgeId">
+				<column name="EDGE_ID" length="100" />
+			</basic>
+			<basic name="fromNodeId">
+				<column name="FROM_NODE_ID" length="100" nullable="false" />
+			</basic>
+			<basic name="toNodeId">
+				<column name="TO_NODE_ID" length="100" nullable="false" />
+			</basic>
+		</attributes>
+	</entity>
+
+	<entity class="org.fireflow.engine.impl.TaskInstance" access="FIELD">
+		<table name="T_FF_RT_TASKINSTANCE" />
+		<discriminator-column name="BIZ_TYPE" length="250"
+			discriminator-type="STRING" />
+		<attributes>
+			<id name="id">
+				<column name="ID" length="50" />
+			</id>
+			<basic name="taskId">
+				<column name="TASK_ID" length="300" nullable="false" />
+			</basic>
+			<basic name="activityId">
+				<column name="ACTIVITY_ID" length="200" nullable="false" />
+			</basic>
+			<basic name="name">
+				<column name="NAME" length="100" nullable="false" />
+			</basic>
+			<basic name="displayName">
+				<column name="DISPLAY_NAME" length="128" />
+			</basic>
+			<basic name="state">
+				<column name="STATE" length="1" nullable="false" />
+			</basic>
+			<basic name="suspended">
+				<column name="SUSPENDED" length="1" nullable="false" />
+			</basic>
+			<basic name="taskType">
+				<column name="TASK_TYPE" length="10" />
+			</basic>
+			<basic name="createdTime">
+				<column name="CREATED_TIME" nullable="false" />
+			</basic>
+			<basic name="startedTime">
+				<column name="STARTED_TIME" />
+			</basic>
+			<basic name="expiredTime">
+				<column name="EXPIRED_TIME" />
+			</basic>
+			<basic name="endTime">
+				<column name="END_TIME" />
+			</basic>
+			<basic name="assignmentStrategy">
+				<column name="ASSIGNMENT_STRATEGY" length="10" />
+			</basic>
+			<basic name="processInstanceId">
+				<column name="PROCESSINSTANCE_ID" length="50" nullable="false" />
+			</basic>
+			<basic name="processId">
+				<column name="PROCESS_ID" length="100" nullable="false" />
+			</basic>
+			<basic name="version">
+				<column name="VERSION" length="4" nullable="false" />
+			</basic>
+			<basic name="targetActivityId">
+				<column name="TARGET_ACTIVITY_ID" length="100" />
+			</basic>
+			<basic name="fromActivityId">
+				<column name="FROM_ACTIVITY_ID" length="600" />
+			</basic>
+			<basic name="stepNumber">
+				<column name="STEP_NUMBER" length="4" nullable="false" />
+			</basic>
+			<basic name="canBeWithdrawn">
+				<column name="CAN_BE_WITHDRAWN" nullable="false" />
+			</basic>
+		</attributes>
+
+	</entity>
+
+	<entity class="org.fireflow.kernel.impl.Token" access="FIELD">
+		<table name="T_FF_RT_TOKEN" />
+		<attributes>
+			<id name="id">
+				<column name="ID" length="50" />
+			</id>
+			<basic name="alive">
+				<column name="ALIVE" nullable="false" />
+			</basic>
+			<basic name="value">
+				<column name="VALUE" nullable="false" />
+			</basic>
+			<basic name="nodeId">
+				<column name="NODE_ID" length="200" nullable="false" />
+			</basic>
+			<basic name="processInstanceId">
+				<column name="PROCESSINSTANCE_ID" length="50" nullable="false" />
+			</basic>
+			<basic name="stepNumber">
+				<column name="STEP_NUMBER" length="4" nullable="false" />
+			</basic>
+			<basic name="fromActivityId">
+				<column name="FROM_ACTIVITY_ID" length="100" />
+			</basic>
+		</attributes>
+	</entity>
+
+	<entity class="org.fireflow.engine.impl.WorkItem" access="FIELD">
+		<table name="T_FF_RT_WORKITEM" />
+		<attributes>
+			<id name="id">
+				<column name="ID" length="50" />
+			</id>
+			<basic name="state">
+				<column name="STATE" length="1" nullable="false" />
+			</basic>
+			<basic name="createdTime">
+				<column name="CREATED_TIME" nullable="false" />
+			</basic>
+			<basic name="claimedTime">
+				<column name="CLAIMED_TIME" />
+			</basic>
+			<basic name="endTime">
+				<column name="END_TIME" />
+			</basic>
+			<basic name="actorId">
+				<column name="ACTOR_ID" length="50" />
+			</basic>
+			<basic name="comments">
+				<column name="COMMENTS" length="1024" />
+			</basic>
+
+			<many-to-one name="taskInstance" fetch="EAGER" optional="false"
+				target-entity="org.fireflow.engine.impl.TaskInstance">
+				<join-column name="TASKINSTANCE_ID" />
+				<cascade>
+					<cascade-refresh />
+				</cascade>
+			</many-to-one>
+
+			<transient name="taskInstanceId" />
+		</attributes>
+	</entity>
+
+	<entity class="org.fireflow.engine.impl.ProcessInstance" access="FIELD">
+		<table name="T_FF_RT_PROCESSINSTANCE" />
+		<attributes>
+			<id name="id">
+				<column name="ID" length="50" />
+			</id>
+			<basic name="processId">
+				<column name="PROCESS_ID" length="100" nullable="false" />
+			</basic>
+			<basic name="version">
+				<column name="VERSION" length="4" nullable="false" />
+			</basic>
+			<basic name="name">
+				<column name="NAME" length="100" />
+			</basic>
+			<basic name="displayName">
+				<column name="DISPLAY_NAME" length="128" />
+			</basic>
+			<basic name="state">
+				<column name="STATE" length="1" nullable="false" />
+			</basic>
+			<basic name="suspended">
+				<column name="SUSPENDED" length="1" nullable="false" />
+			</basic>
+			<basic name="creatorId">
+				<column name="CREATOR_ID" length="50" />
+			</basic>
+			<basic name="createdTime">
+				<column name="CREATED_TIME" />
+			</basic>
+			<basic name="startedTime">
+				<column name="STARTED_TIME" />
+			</basic>
+			<basic name="expiredTime">
+				<column name="EXPIRED_TIME" />
+			</basic>
+			<basic name="endTime">
+				<column name="END_TIME" />
+			</basic>
+			<basic name="parentProcessInstanceId">
+				<column name="PARENT_PROCESSINSTANCE_ID" length="50" />
+			</basic>
+			<basic name="parentTaskInstanceId">
+				<column name="PARENT_TASKINSTANCE_ID" length="50" />
+			</basic>
+			<transient name="processInstanceVariables" />
+		</attributes>
+	</entity>
+
+	<entity class="org.fireflow.engine.impl.ProcessInstanceVar"
+		access="FIELD">
+		<table name="T_FF_RT_PROCINST_VAR" />
+		<attributes>
+			<embedded-id name="varPrimaryKey" />
+			<basic name="value" >
+				<column name="VALUE"/>
+			</basic>
+			<basic name="valueType">
+				<column name="VALUETYPE"/>
+			</basic>
+		</attributes>
+	</entity>
+	<embeddable class="org.fireflow.engine.impl.ProcessInstanceVarPk" access="FIELD">
+		<attributes>
+			<basic name="name">
+				<column name="NAME" />
+			</basic>
+			<basic name="processInstanceId">
+				<column name="PROCESSINSTANCE_ID" />
+			</basic>
+		</attributes>
+	</embeddable>
+</entity-mappings> 

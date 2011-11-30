@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="Skip" Name="Skip" DisplayName="略过" ResourceFile="" ResourceManager="">
+    <fpdl:DataFields>
+        <fpdl:DataField Id="Skip.YuSuanJinE" Name="YuSuanJinE" DisplayName="预算金额" DataType="INTEGER" InitialValue="1000"/>
+    </fpdl:DataFields>
+    <fpdl:StartNode Id="Skip.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="5"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="86"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Tasks/>
+    <fpdl:Activities>
+        <fpdl:Activity Id="Skip.Shenqing" Name="Shenqing" DisplayName="申请" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="61"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="127"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="63"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="Skip.Shenqing.Shenqing_Task1" Name="Shenqing_Task1" DisplayName="申请xyz项目预算" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1">
+                    <fpdl:Performer Name="Test" DisplayName="Test">
+                        <fpdl:AssignmentHandler>cn.firesoft.xyz.MyAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="Skip.Activity2" Name="Activity2" DisplayName="科长审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="76"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="180"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="Skip.Activity2.Task1" Name="Task1" DisplayName="审批项目预算" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1">
+                    <fpdl:Performer Name="Test" DisplayName="Test">
+                        <fpdl:AssignmentHandler>cn.firesoft.xyz.MyAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="XiangMu_ShenPi_Form" DisplayName="项目审批表单">
+                        <fpdl:Uri>/cn/firesoft/xyz/XiangMu_ShenPi_Form.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                    <fpdl:Duration Value="2" Unit="DAY" IsBusinessTime="true"/>
+                    <fpdl:EventListeners>
+                        <fpdl:EventListener ClassName="cn.firesoft.xyz.MyTaskInstanceEventListener"/>
+                    </fpdl:EventListeners>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="Skip.Activity3" Name="Activity3" DisplayName="处长审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="387"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="180"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="Skip.Activity3.Task1" Name="Task1" DisplayName="审批项目预算" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1">
+                    <fpdl:Performer Name="Test" DisplayName="Test">
+                        <fpdl:AssignmentHandler>cn.firesoft.xyz.MyAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="Skip.局长审批" Name="局长审批" DisplayName="" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="702"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="181"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="Skip.局长审批.Task1" Name="Task1" DisplayName="审批项目预算" Type="FORM" CompletionStrategy="ANY" DefaultView="VIEWFORM" Priority="1">
+                    <fpdl:Performer Name="Test" DisplayName="Test">
+                        <fpdl:AssignmentHandler>cn.firesoft.xyz.MyAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="Skip.Activity5" Name="Activity5" DisplayName="略过" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="46"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="70"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="394"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="271"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks/>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="Skip.Activity6" Name="Activity6" DisplayName="略过" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="46"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="65"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="714"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="263"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks/>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="Skip.Synchronizer1" Name="Synchronizer1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="114"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="141"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="Skip.Synchronizer2" Name="Synchronizer2" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="218"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="199"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="Skip.Synchronizer3" Name="Synchronizer3" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="531"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="202"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="Skip.EndNode1" Name="EndNode1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="853"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="202"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="Skip.Transition1" From="Skip.START_NODE" To="Skip.Shenqing" Name="Transition1" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition2" From="Skip.Shenqing" To="Skip.Synchronizer1" Name="Transition2" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition3" From="Skip.Synchronizer1" To="Skip.Activity2" Name="Transition3" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition4" From="Skip.Activity2" To="Skip.Synchronizer2" Name="Transition4" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition5" From="Skip.Synchronizer2" To="Skip.Activity3" Name="Transition5" DisplayName="预算金额大于1万元">
+            <fpdl:Condition>YuSuanJinE&gt;10000</fpdl:Condition>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.labelPosition" Value="(312,199)"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition6" From="Skip.Activity3" To="Skip.Synchronizer3" Name="Transition6" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition7" From="Skip.Synchronizer3" To="Skip.局长审批" Name="Transition7" DisplayName="预算金额大于10万元">
+            <fpdl:Condition>YuSuanJinE&gt;100000</fpdl:Condition>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.labelPosition" Value="(626,196)"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition8" From="Skip.局长审批" To="Skip.EndNode1" Name="Transition8" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition9" From="Skip.Synchronizer2" To="Skip.Activity5" Name="Transition9" DisplayName="预算金额小于等于1万元">
+            <fpdl:Condition>YuSuanJinE&lt;=10000</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition10" From="Skip.Activity5" To="Skip.Synchronizer3" Name="Transition10" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition11" From="Skip.Synchronizer3" To="Skip.Activity6" Name="Transition11" DisplayName="预算金额小于等于10万元">
+            <fpdl:Condition>YuSuanJinE&lt;=100000</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="Skip.Transition12" From="Skip.Activity6" To="Skip.EndNode1" Name="Transition12" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+    </fpdl:Transitions>
+    <fpdl:EventListeners>
+        <fpdl:EventListener ClassName="cn.firesoft.xyz.MyWorkflowProcessEventListener"/>
+    </fpdl:EventListeners>
+</fpdl:WorkflowProcess>

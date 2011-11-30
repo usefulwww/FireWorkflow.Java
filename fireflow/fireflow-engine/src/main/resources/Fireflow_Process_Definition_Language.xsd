@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 主要调整是
+	1、去掉Route类型的Activity
+	2、增加Synchronizer
+	
+	3、重定义Transition，使之等于Petri Net中的f
+	4、去掉Join Element,Split Element等Transition Restriction
+	5、增加InstantiateCondition（实例化条件）
+	6、ActivitySet暂时不考虑
+	7、Block Activity暂时不考虑
+	8、增加Task定义
+	
+	**各个对象的listeners 暂时没有考虑
+-->
+<xsd:schema xmlns="http://www.fireflow.org/Fireflow_Process_Definition_Language" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.fireflow.org/Fireflow_Process_Definition_Language">
+
+	<!-- 顶层元素：工作流 -->
+	<xsd:element name="WorkflowProcess">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="Description"/>
+				<xsd:element minOccurs="0" ref="DataFields"/>
+				<xsd:element minOccurs="0" ref="StartNode"/>
+				<xsd:element minOccurs="0" ref="Activities"/>
+				<xsd:element minOccurs="0" ref="Synchronizers"/>
+				<xsd:element minOccurs="0" ref="EndNodes"/>
+				<xsd:element minOccurs="0" ref="Transitions"/>
+                <xsd:element minOccurs="0" ref="EventListeners"/>
+				<xsd:element minOccurs="0" ref="ExtendedAttributes"/>
+			</xsd:sequence>
+			<xsd:attribute name="Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="DisplayName" type="xsd:string"/>
+			<!-- 资源文件url -->
+			<xsd:attribute name="ResourceFile" type="xsd:anyURI"/>
+			<!-- 资源文件handler,如果ResourceFile 和 ResourceManager同时存在，则ResourceManager具有优先权 -->
+			<xsd:attribute name="ResourceManager" type="xsd:string"/>
+			<xsd:attribute name="Version" type="xsd:positiveInteger"/>
+		</xsd:complexType>
+	</xsd:element>
+        
+        <!-- 事件监听器  -->
+        <xsd:element name="EventListeners">
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" ref="EventListener"/>
+				</xsd:sequence>
+			</xsd:complexType>
+        </xsd:element>
+        
+        <xsd:element name="EventListener">
+			<xsd:complexType>
+				<xsd:attribute name="ClassName" type="xsd:string" use="required"/>
+			</xsd:complexType>
+        </xsd:element>
+        
+
+	<!-- 流程变量 -->
+	<xsd:element name="DataFields">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="DataField"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DataField">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="Description"/>
+
+
+				<xsd:element minOccurs="0" ref="ExtendedAttributes"/>
+			</xsd:sequence>
+			<xsd:attribute name="Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="DisplayName" type="xsd:string"/>
+			<xsd:attribute name="DataType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="STRING"/>
+						<xsd:enumeration value="FLOAT"/>
+						<xsd:enumeration value="INTEGER"/>
+						<xsd:enumeration value="DATETIME"/>
+						<xsd:enumeration value="BOOLEAN"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="InitialValue" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- 开始节点 -->
+	<xsd:element name="StartNode">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="Description"/>
+				<xsd:element minOccurs="0" ref="ExtendedAttributes"/>
+			</xsd:sequence>
+			<xsd:attribute name="Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="DisplayName" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- 流程环节 -->
+	<xsd:element name="Activities">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="Activity"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Activity">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="Description"/>
+				<xsd:element minOccurs="0" ref="Tasks"/>
+				<xsd:element minOccurs="0" ref="EventListeners"/>				
+				<xsd:element minOccurs="0" ref="ExtendedAttributes"/>
+			</xsd:sequence>
+			<xsd:attribute name="Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="DisplayName" type="xsd:string"/>
+			<xsd:attribute name="CompletionStrategy">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="ALL"/>
+						<xsd:enumeration value="ANY"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- 流程同步器 -->
+	<xsd:element name="Synchronizers">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="Synchronizer"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="Synchronizer">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="Description"/>
+				<xsd:element minOccurs="0" ref="ExtendedAttributes"/>
+			</xsd:sequence>
+			<xsd:attribute name="Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="DisplayName" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- 结束节点 -->
+	<xsd:element name="EndNodes">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="EndNode"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="EndNode">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="Description"/>
+				<xsd:element minOccurs="0" ref="ExtendedAttributes"/>
+			</xsd:sequence>
+			<xsd:attribute name="Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="DisplayName" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- 流程转移 -->
+	<xsd:element name="Transitions">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="Transition"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Transition">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="Description"/>
+				<xsd:element minOccurs="0" name="Condition" type="xsd:string"/>
+				<xsd:element minOccurs="0" ref="ExtendedAttributes"/>
+			</xsd:sequence>
+			<xsd:attribute name="Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="DisplayName" type="xsd:string"/>
+			<xsd:attribute name="From" type="xsd:string" use="required"/>
+			<xsd:attribute name="To" type="xsd:string" use="required"/>
+
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- 工作流任务 -->
+	<xsd:element name="Tasks">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="1" ref="Task"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Task">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" ref="Description"/>
+
+				<xsd:element minOccurs="0" name="EditForm">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="0" ref="Description"/>
+							<xsd:element name="uri" type="xsd:string"/>
+						</xsd:sequence>
+						<xsd:attribute name="Name" type="xsd:string" use="required"/>
+						<xsd:attribute name="DisplayName" type="xsd:string"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element minOccurs="0" name="ViewForm">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="0" ref="Description"/>
+							<xsd:element name="uri" type="xsd:string"/>
+						</xsd:sequence>
+						<xsd:attribute name="Name" type="xsd:string" use="required"/>
+						<xsd:attribute name="DisplayName" type="xsd:string"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element minOccurs="0" name="ListForm">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="0" ref="Description"/>
+							<xsd:element name="uri" type="xsd:string"/>
+						</xsd:sequence>
+						<xsd:attribute name="Name" type="xsd:string" use="required"/>
+						<xsd:attribute name="DisplayName" type="xsd:string"/>
+					</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element minOccurs="0" name="Application">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="0" ref="Description"/>
+							<xsd:element name="handler" type="xsd:string"/>
+						</xsd:sequence>
+						<xsd:attribute name="Name" type="xsd:string" use="required"/>
+						<xsd:attribute name="DisplayName" type="xsd:string"/>
+					</xsd:complexType>
+				</xsd:element>
+
+
+				<xsd:element minOccurs="0" name="SubWorkflowProcess">
+					<xsd:complexType>
+						<xsd:attribute name="Id" type="xsd:string" use="required"/>
+						<xsd:attribute name="Name" type="xsd:string" use="required"/>
+						<xsd:attribute name="DisplayName" type="xsd:string"/>
+					</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element minOccurs="0" name="Performer">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element minOccurs="0" ref="Description"/>
+							<xsd:element name="AssignmentHandler" type="xsd:string"/>
+						</xsd:sequence>
+						<xsd:attribute name="Name" type="xsd:string"/>
+						<xsd:attribute name="DisplayName" type="xsd:string"/>
+					</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element minOccurs="0" ref="Duration"/>
+
+                                <xsd:element minOccurs="0" ref="EventListeners"/>
+			</xsd:sequence>
+			<xsd:attribute name="Id" type="xsd:string" use="required"/>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="DisplayName" type="xsd:string"/>
+
+			<xsd:attribute default="FORM" name="Type">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="FORM"/>
+						<xsd:enumeration value="APPLICATION"/>
+						<xsd:enumeration value="SUBFLOW"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+                        <!--  startModel 没有意义。
+			<xsd:attribute name="StartMode" default="MANUAL">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="MANUAL" />
+						<xsd:enumeration value="AUTOMATIC" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+                        -->
+			<xsd:attribute default="ANY" name="CompletionStrategy">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="ALL"/>
+						<xsd:enumeration value="ANY"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+
+			<xsd:attribute default="VIEWFORM" name="DefaultView">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="EDITFORM"/>
+						<xsd:enumeration value="VIEWFORM"/>
+						<xsd:enumeration value="LISTFORM"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+
+			<xsd:attribute default="1" name="Priority" type="xsd:int"/>
+
+			<xsd:attribute default="SYNCHR" name="Execution">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="ASYNCHR"/>
+						<xsd:enumeration value="SYNCHR"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="ExtendedAttributes">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="ExtendedAttribute"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ExtendedAttribute">
+		<xsd:complexType>
+			<xsd:attribute name="Name" type="xsd:string" use="required"/>
+			<xsd:attribute name="Value" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="Description" type="xsd:string"/>
+
+	<xsd:element name="Duration">
+		<xsd:complexType>
+			<xsd:attribute name="Value" type="xsd:positiveInteger"/>
+			<xsd:attribute name="Unit">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="DAY"/>
+						<xsd:enumeration value="MONTH"/>
+						<xsd:enumeration value="YEAR"/>
+						<xsd:enumeration value="HOUR"/>
+						<xsd:enumeration value="MINUTE"/>
+						<xsd:enumeration value="SECOND"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute default="true" name="IsBusinessTime" type="xsd:boolean"/>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

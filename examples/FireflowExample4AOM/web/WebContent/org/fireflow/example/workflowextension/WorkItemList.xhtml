@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html" xmlns:w="http://www.apusic.com/jsf/widget"
+        xmlns:layout="http://www.apusic.com/jsf/layout" xmlns:om="http://www.apusic.com/jsf/misc"
+        renderKitId="AJAX">
+        <w:head>
+                <w:stylesheet src="/common/resources/examples.css" />
+        </w:head>
+        <w:page title="EditGrid Demo">
+                <div align="center" >
+                <p><h3>待办工单</h3></p>
+                </div>
+                <br />
+                <w:form style="width:80%;height:80%">
+                        <w:dataGrid id="grid" paged="true" singleSelect="true" rows="10" toolBarPosition="top">
+                        	<w:outputColumn header="工单名称" id="displayName" />
+                        	<w:outputColumn header="订单号" id="sn" />
+                        	<w:outputColumn header="商品名称" id="goodsName" />
+                        	<w:outputColumn header="数量" id="quantity" />
+                        	<w:outputColumn header="客户姓名" id="customerName" />
+                        	<w:outputColumn header="状态" id="state" />
+                        	<w:outputColumn id="id" hidden="true" />
+                                <w:pagingToolbar>
+                                        <w:separator />
+                                        <w:button id="claim" value="签收" image="../images/save.gif" action="#{WorkItemListBean.claim}" />
+                                        <w:button id="open" value="处理" image="../images/save.gif"  action="#{WorkItemListBean.open}" />
+                                </w:pagingToolbar>
+                                
+                        </w:dataGrid>
+                </w:form>
+        </w:page>
+</f:view>

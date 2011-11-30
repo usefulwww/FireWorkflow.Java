@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
+	<ui:composition template="/AbstractMain.xhtml">
+		<ui:define name="mainmenu">
+			<table width="100%" border="0" cellpadding="0" cellspacing="1"
+				bgcolor="#FFFFFF">
+
+				<tr>
+					<td width="20%" height="28" bgcolor="#6293BB">
+						<!-- bgcolor="#0165B7" -->
+						<div align="center">
+							<a
+								href="#{facesContext.externalContext.requestContextPath}/org/fireflow/example/goods_deliver_process/Main.faces"
+								class="mainmenu">业务菜单</a>
+						</div>
+					</td>
+
+					<td width="20%" bgcolor="#6293BB">
+						<div align="center">
+							<a
+								href="#"
+								class="mainmenu">流程管理</a>
+						</div>
+					</td>
+					<td width="20%" bgcolor="#6293BB">
+						<div align="center">
+
+						</div>
+					</td>
+					<td width="20%" bgcolor="#6293BB">
+						<div align="center">
+
+						</div>
+					</td>
+					<td width="20%" bgcolor="#6293BB">
+						<div align="center">
+							&nbsp;
+						</div>
+					</td>
+				</tr>
+			</table>
+		</ui:define>	
+		<ui:define name="navigation">
+			<div
+				style="width: 220px; height: 430px; border-right: 1px solid silver; padding-left: 10px">
+				<table>
+
+					<tr>
+						<td>
+							流程管理菜单
+						</td>
+					</tr>
+					<tr>
+						<td>
+							|--
+							<a
+								href="#{facesContext.externalContext.requestContextPath}/org/fireflow/example/WorkflowTrace.faces">流程进度查询</a>
+						</td>
+					</tr>					
+					<tr>
+						<td>
+							|--
+							<a href="JavaScript:alert('建设中')">查看数据库中布署的流程</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							|--
+							<a href="JavaScript:alert('建设中')">发布流程到数据库中</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</ui:define>
+</ui:composition>
+	
+</html>

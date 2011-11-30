@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+	
+	<managed-bean>
+		<managed-bean-name>MyWorkItemBean</managed-bean-name>
+		<managed-bean-class>
+			org.fireflow.example.workflowextension.MyWorkItemBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>commonWorkflowDAO</property-name>
+			<value>#{CommonWorkflowDAO}</value>
+		</managed-property>
+	</managed-bean>	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>MyWorkItemView</from-outcome>
+			<to-view-id>/org/fireflow/example/workflowextension/MyWorkItem.xhtml</to-view-id>
+		</navigation-case>	
+	</navigation-rule>
+
+</faces-config>

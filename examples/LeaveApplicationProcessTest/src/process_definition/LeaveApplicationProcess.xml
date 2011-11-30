@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="LeaveApplicationProcess" Name="LeaveApplicationProcess" DisplayName="LeaveApplicationProcess" ResourceFile="" ResourceManager="">
+    <fpdl:DataFields>
+        <fpdl:DataField Id="LeaveApplicationProcess.leaveDays" Name="leaveDays" DisplayName="请假天数" DataType="INTEGER" InitialValue="1"/>
+        <fpdl:DataField Id="LeaveApplicationProcess.approvalFlag" Name="approvalFlag" DisplayName="审批意见" DataType="BOOLEAN" InitialValue="false"/>
+    </fpdl:DataFields>
+    <fpdl:StartNode Id="LeaveApplicationProcess.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="18"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="86"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Tasks/>
+    <fpdl:Activities>
+        <fpdl:Activity Id="LeaveApplicationProcess.Fulfill_The_ApplicationForm_Activity" Name="Fulfill_The_ApplicationForm_Activity" DisplayName="申请" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="97"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="65"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="LeaveApplicationProcess.Fulfill_The_ApplicationForm_Activity.Fulfill_The_ApplicationForm_Task" Name="Fulfill_The_ApplicationForm_Task" DisplayName="填写请假单" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="Self" DisplayName="当前用户">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.example.leaveapplication.workflowextension.CurrentUserAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="ApplicationForm" DisplayName="请假申请表">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>/org/fireflow/example/leaveapplication/bizpages/SubmitApplication.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="LeaveApplicationProcess.DepartmentManager_Approve_Activity" Name="DepartmentManager_Approve_Activity" DisplayName="部门经理审批" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="279"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="66"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="LeaveApplicationProcess.DepartmentManager_Approve_Activity.Approval_Task" Name="Approval_Task" DisplayName="审批请假单" Type="FORM" CompletionStrategy="ANY" DefaultView="EDITFORM" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Performer Name="DepartmentManager" DisplayName="部门经理">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:AssignmentHandler>org.fireflow.example.leaveapplication.workflowextension.RoleDepartmentBasedAssignmentHandler</fpdl:AssignmentHandler>
+                    </fpdl:Performer>
+                    <fpdl:EditForm Name="ApprovalForm" DisplayName="请假审批表单">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Uri>/org/fireflow/example/leaveapplication/bizpages/ApproveLeaveApplication.jsp</fpdl:Uri>
+                    </fpdl:EditForm>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="LeaveApplicationProcess.Send_Email_Activity" Name="Send_Email_Activity" DisplayName="发送邮件" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="204"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="540"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="65"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="LeaveApplicationProcess.Send_Email_Activity.Send_Email_Task" Name="Send_Email_Task" DisplayName="邮件通知申请人审批结果" Type="TOOL" Execution="SYNCHR" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Application Name="EmailSender" DisplayName="邮件发送接口程序">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Handler>org.fireflow.example.leaveapplication.workflowextension.EmailSender</fpdl:Handler>
+                    </fpdl:Application>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="LeaveApplicationProcess.Synchronizer1" Name="Synchronizer1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="228"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="85"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+        <fpdl:Synchronizer Id="LeaveApplicationProcess.Synchronizer2" Name="Synchronizer2" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="450"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="86"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="LeaveApplicationProcess.EndNode1" Name="EndNode1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="814"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="85"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="LeaveApplicationProcess.Transition1" From="LeaveApplicationProcess.START_NODE" To="LeaveApplicationProcess.Fulfill_The_ApplicationForm_Activity" Name="Transition1" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="LeaveApplicationProcess.Transition2" From="LeaveApplicationProcess.Fulfill_The_ApplicationForm_Activity" To="LeaveApplicationProcess.Synchronizer1" Name="Transition2" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="LeaveApplicationProcess.Transition3" From="LeaveApplicationProcess.Synchronizer1" To="LeaveApplicationProcess.DepartmentManager_Approve_Activity" Name="Transition3" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="LeaveApplicationProcess.Transition4" From="LeaveApplicationProcess.DepartmentManager_Approve_Activity" To="LeaveApplicationProcess.Synchronizer2" Name="Transition4" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="LeaveApplicationProcess.Transition11" From="LeaveApplicationProcess.Send_Email_Activity" To="LeaveApplicationProcess.EndNode1" Name="Transition11" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="LeaveApplicationProcess.Transition6" From="LeaveApplicationProcess.Synchronizer2" To="LeaveApplicationProcess.Send_Email_Activity" Name="Transition6"/>
+    </fpdl:Transitions>
+</fpdl:WorkflowProcess>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class dynamic-update="true" name="org.fireflow.engine.impl.TaskInstance"
+		table="T_FF_RT_TASKINSTANCE">
+		<id name="id" type="java.lang.String">
+			<column length="50" name="ID" />
+			<generator class="uuid" />
+		</id>
+		
+		<discriminator column="BIZ_TYPE" length="250" type="java.lang.String" />
+		
+		<property name="taskId" type="java.lang.String" update="false">
+			<column length="300" name="TASK_ID" not-null="true">
+				<comment>任务id</comment>
+			</column>
+		</property>
+		<property name="activityId" type="java.lang.String" update="false">
+			<column length="200" name="ACTIVITY_ID" not-null="true">
+				<comment>环节id</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String" update="false">
+			<column length="100" name="NAME" not-null="true">
+				<comment>名称</comment>
+			</column>
+		</property>
+		<property name="displayName" type="java.lang.String" update="false">
+			<column length="128" name="DISPLAY_NAME">
+				<comment>名称</comment>
+			</column>
+		</property>
+		<property name="state" type="java.lang.Integer">
+			<column length="1" name="STATE" not-null="true">
+				<comment>状态</comment>
+			</column>
+		</property>
+		<property name="suspended" type="java.lang.Boolean">
+			<column length="1" name="SUSPENDED" not-null="true">
+				<comment>是否挂起</comment>
+			</column>
+		</property>
+		<property name="taskType" type="java.lang.String" update="false">
+			<column length="10" name="TASK_TYPE">
+				<comment>任务类型,FormTask,ToolTask,SubflowTask</comment>
+			</column>
+		</property>
+		<property name="createdTime" type="java.util.Date" update="false">
+			<column name="CREATED_TIME" not-null="true">
+				<comment>创建时间</comment>
+			</column>
+		</property>
+		<property name="startedTime" type="java.util.Date">
+			<column name="STARTED_TIME">
+				<comment>启动时间</comment>
+			</column>
+		</property>
+		<property name="expiredTime" type="java.util.Date">
+			<column name="EXPIRED_TIME">
+				<comment>到期时间</comment>
+			</column>
+		</property>
+		<property name="endTime" type="java.util.Date">
+			<column name="END_TIME">
+				<comment>终止时间</comment>
+			</column>
+		</property>
+		<property name="assignmentStrategy" type="java.lang.String"
+			update="false">
+			<column length="10" name="ASSIGNMENT_STRATEGY">
+				<comment>WorkItem分配策略,取值ALL,ANY</comment>
+			</column>
+		</property>
+		<property name="processInstanceId" type="java.lang.String"
+			update="false">
+			<column length="50" name="PROCESSINSTANCE_ID" not-null="true">
+				<comment>流程实例id</comment>
+			</column>
+		</property>
+		<property name="processId" type="java.lang.String" update="false">
+			<column length="100" name="PROCESS_ID" not-null="true">
+				<comment>流程id</comment>
+			</column>
+		</property>
+		<property name="version" type="java.lang.Integer" update="false">
+			<column length="4" name="VERSION" not-null="true">
+				<comment>流程版本号</comment>
+			</column>
+		</property>
+		<property name="targetActivityId" type="java.lang.String">
+			<column length="100" name="TARGET_ACTIVITY_ID">
+				<comment>后续activity的id</comment>
+			</column>
+		</property>
+		<property name="fromActivityId" type="java.lang.String"
+			update="false">
+			<column length="600" name="FROM_ACTIVITY_ID">
+				<comment>前驱activity的id</comment>
+			</column>
+		</property>
+		<property name="stepNumber" type="java.lang.Integer" update="false"
+			index="idx_taskInst_stepNb">
+			<column length="4" name="STEP_NUMBER" not-null="true">
+				<comment>步数</comment>
+			</column>
+		</property>
+
+		<property name="canBeWithdrawn" type="java.lang.Boolean">
+			<column name="CAN_BE_WITHDRAWN" not-null="true">
+				<comment>是否可以被撤销</comment>
+			</column>
+		</property>
+		<!--
+			<property name="tokenId" type="java.lang.String" update="false">
+			<column length="100" name="TOKEN_ID" not-null="true"/> </property>
+		-->
+	</class>
+</hibernate-mapping>

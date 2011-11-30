@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fpdl:WorkflowProcess PUBLIC "-//Nieyun Chen//ProcessDefinition//CN" "FireFlow_Process_Definition_Language.dtd">
+
+<fpdl:WorkflowProcess xmlns:fpdl="http://www.fireflow.org/Fireflow_Process_Definition_Language" Id="TestToolTaskProcess" Name="TestToolTaskProcess" DisplayName="测试ToolTask" ResourceFile="" ResourceManager="">
+    <fpdl:DataFields>
+        <fpdl:DataField Id="TestToolTaskProcess.outputType" Name="outputType" DisplayName="输出方式" DataType="STRING" InitialValue="bat"/>
+    </fpdl:DataFields>
+    <fpdl:StartNode Id="TestToolTaskProcess.START_NODE" Name="START_NODE" DisplayName="">
+        <fpdl:ExtendedAttributes>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="120"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+            <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="5"/>
+        </fpdl:ExtendedAttributes>
+    </fpdl:StartNode>
+    <fpdl:Tasks/>
+    <fpdl:Activities>
+        <fpdl:Activity Id="TestToolTaskProcess.Activity1" Name="Activity1" DisplayName="调用bat" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="63"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="100"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="193"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="61"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="TestToolTaskProcess.Activity1.Task1" Name="Task1" DisplayName="通过bat读取outputType信息" Type="TOOL" Execution="SYNCHR" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Application Name="GetOutputTypeAppHandler" DisplayName="输出方式获取程序">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Handler>org.fireflow.example.testtooltask.applicationhandler.GetOutputTypeAppHandler</fpdl:Handler>
+                    </fpdl:Application>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="TestToolTaskProcess.Activity2" Name="Activity2" DisplayName="bat输出" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="33"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="186"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="429"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="TestToolTaskProcess.Activity2.Task2" Name="Task2" DisplayName="通过bat输出到output.txt文件" Type="TOOL" Execution="SYNCHR" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Application Name="BatOutputAppHandler" DisplayName="Bat输出程序">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Handler>org.fireflow.example.testtooltask.applicationhandler.BatOutputAppHandler</fpdl:Handler>
+                    </fpdl:Application>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="TestToolTaskProcess.Activity3" Name="Activity3" DisplayName="java输出" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="184"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="212"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="423"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="TestToolTaskProcess.Activity3.Task3" Name="Task3" DisplayName="通过java.io输出到output.txt文件" Type="TOOL" Execution="SYNCHR" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Application Name="JavaioOutputAppHandler" DisplayName="Java io输出程序">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Handler>org.fireflow.example.testtooltask.applicationhandler.JavaioOutputAppHandler</fpdl:Handler>
+                    </fpdl:Application>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+        <fpdl:Activity Id="TestToolTaskProcess.Activity4" Name="Activity4" DisplayName="错误" CompletionStrategy="ALL">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="60"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="334"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="230"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="424"/>
+            </fpdl:ExtendedAttributes>
+            <fpdl:Tasks>
+                <fpdl:Task Id="TestToolTaskProcess.Activity4.Task4" Name="Task4" DisplayName="打印错误信息" Type="TOOL" Execution="SYNCHR" Priority="1" LoopStrategy="REDO">
+                    <fpdl:Application Name="ErrorHandler" DisplayName="错误信息输出程序">
+                        <fpdl:Description></fpdl:Description>
+                        <fpdl:Handler>org.fireflow.example.testtooltask.applicationhandler.ErrorHandler</fpdl:Handler>
+                    </fpdl:Application>
+                </fpdl:Task>
+            </fpdl:Tasks>
+            <fpdl:TaskRefs/>
+        </fpdl:Activity>
+    </fpdl:Activities>
+    <fpdl:Synchronizers>
+        <fpdl:Synchronizer Id="TestToolTaskProcess.Synchronizer1" Name="Synchronizer1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="120"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="296"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Synchronizer>
+    </fpdl:Synchronizers>
+    <fpdl:EndNodes>
+        <fpdl:EndNode Id="TestToolTaskProcess.EndNode1" Name="EndNode1" DisplayName="">
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.height" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.y" Value="129"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.width" Value="20"/>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.bounds.x" Value="732"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:EndNode>
+    </fpdl:EndNodes>
+    <fpdl:Transitions>
+        <fpdl:Transition Id="TestToolTaskProcess.Transition1" From="TestToolTaskProcess.Activity1" To="TestToolTaskProcess.Synchronizer1" Name="Transition1" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="TestToolTaskProcess.Transition2" From="TestToolTaskProcess.Synchronizer1" To="TestToolTaskProcess.Activity2" Name="Transition2" DisplayName="outputType='bat'">
+            <fpdl:Condition>outputType eq 'bat'</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="TestToolTaskProcess.Transition3" From="TestToolTaskProcess.Synchronizer1" To="TestToolTaskProcess.Activity3" Name="Transition3" DisplayName="outputType='java.io'">
+            <fpdl:Condition>outputType eq 'java.io'</fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="TestToolTaskProcess.Transition4" From="TestToolTaskProcess.Activity3" To="TestToolTaskProcess.EndNode1" Name="Transition4" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="TestToolTaskProcess.Transition5" From="TestToolTaskProcess.Activity2" To="TestToolTaskProcess.EndNode1" Name="Transition5" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="TestToolTaskProcess.Transition6" From="TestToolTaskProcess.START_NODE" To="TestToolTaskProcess.Activity1" Name="Transition6" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+        </fpdl:Transition>
+        <fpdl:Transition Id="TestToolTaskProcess.Transition7" From="TestToolTaskProcess.Synchronizer1" To="TestToolTaskProcess.Activity4" Name="Transition7" DisplayName="outputType非法">
+            <fpdl:Condition>( not (outputType eq 'bat')) and (not (outputType eq 'java.io'))</fpdl:Condition>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.edgePointList" Value="(307,363)"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Transition>
+        <fpdl:Transition Id="TestToolTaskProcess.Transition8" From="TestToolTaskProcess.Activity4" To="TestToolTaskProcess.EndNode1" Name="Transition8" DisplayName="">
+            <fpdl:Condition></fpdl:Condition>
+            <fpdl:ExtendedAttributes>
+                <fpdl:ExtendedAttribute Name="FIRE_FLOW.edgePointList" Value="(743,364)"/>
+            </fpdl:ExtendedAttributes>
+        </fpdl:Transition>
+    </fpdl:Transitions>
+</fpdl:WorkflowProcess>

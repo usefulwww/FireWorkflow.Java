@@ -1,0 +1,39 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:w="http://www.apusic.com/jsf/widget" xmlns:layout="http://www.apusic.com/jsf/layout"
+	xmlns:ajax="http://www.apusic.com/jsf/ajax" renderKitId="AJAX"
+	xmlns:om="http://www.apusic.com/jsf/misc" xmlns:h="http://java.sun.com/jsf/html">
+	<w:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<style>
+			.cell {
+				width:100%;
+				border-bottom: 1px solid rgb(204, 204, 204); 
+				padding-bottom: 2px; 
+				height:20px;
+				vertical-align: bottom
+			}
+		</style>
+	</w:head>
+	<w:page title="Top Page">
+		<ajax:scripter id="headerScripter"></ajax:scripter>
+		<center>
+		<layout:panelGrid width="100%" border="0" cellpadding="1px" cellspacing="0px" columns="3"
+			style="padding:0px;">			
+			<layout:cell style="padding-right: 10px;padding-left: 30px">
+				<img src="../resources/images/logo.gif" border="0" align="left" alt="Apusic Operamasks" />
+			</layout:cell>
+			<layout:cell align="left" styleClass="cell">
+				<font color="#676767">
+				<b><h:outputText id="welcome" /> Fire Workflow Examples</b>
+				</font>
+			</layout:cell>
+			<layout:cell align="right" style="padding-right:10px" styleClass="cell">
+				<w:form style="width: 105px">
+					<h:commandLink id="logout" style="width:90" />
+				</w:form>
+			</layout:cell>
+		</layout:panelGrid>
+		<br />
+		</center>
+	</w:page>
+</f:view>
